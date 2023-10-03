@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "piano_atlas": "piano"
+      },
+      "name": "default"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "dimasic_server:ur_ghastspawn"
+    },
+    "title": {
+      "translate": "advancements.urghastresp.title"
+    },
+    "description": {
+      "translate": "advancements.urghastresp.descr"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": true
+  },
+  "criteria": {
+    "urghastresp": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "dimasic_server:hydraresp"
+}

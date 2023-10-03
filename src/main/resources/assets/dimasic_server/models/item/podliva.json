@@ -1,0 +1,7 @@
+{
+  "parent": "dimasic_server:custom/podliva",
+  "textures": {
+    "0": "dimasic_server:blocks/podliva",
+    "particle": "dimasic_server:items/podliva"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "dimasic_server:custom/heart_end",
+  "textures": {
+    "1": "dimasic_server:blocks/clear_rainbow",
+    "particle": "dimasic_server:items/clear_rainbow"
+  }
+}

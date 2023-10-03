@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "1": "clear_rainbow"
+      },
+      "name": "default"
+    }
+  }
+}

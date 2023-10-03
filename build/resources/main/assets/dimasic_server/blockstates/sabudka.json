@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "dimasic_server:block/sabudka"
+    },
+    "facing=east": {
+      "model": "dimasic_server:block/sabudka",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "dimasic_server:block/sabudka",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "dimasic_server:block/sabudka",
+      "y": 270
+    }
+  }
+}

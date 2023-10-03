@@ -1,0 +1,305 @@
+{
+  "_fv": 34,
+  "_type": "config",
+  "definition": {
+    "pools": [
+      {
+        "category": "Naga resuurection",
+        "entries": [
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 2,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 0.0,
+            "textDefault": "twilightforest:naga_trophy",
+            "comment": "",
+            "vardisplay": "naga_trophy_block",
+            "varname": "naga_trophy_block",
+            "enablecomment": false,
+            "onlyComment": false,
+            "entityType": "EntityAgeable"
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 2,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 0.0,
+            "textDefault": "twilightforest:ironwood_block",
+            "comment": "",
+            "vardisplay": "naga_ring_block",
+            "varname": "naga_ring_block",
+            "enablecomment": false,
+            "onlyComment": false,
+            "entityType": "EntityAgeable"
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 2,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 0.0,
+            "textDefault": "twilightforest:naga",
+            "comment": "",
+            "vardisplay": "naga_entity",
+            "varname": "naga_entity",
+            "enablecomment": false,
+            "onlyComment": false,
+            "entityType": "EntityAgeable"
+          }
+        ]
+      },
+      {
+        "category": "Lich ressurection",
+        "entries": [
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 2,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 0.0,
+            "textDefault": "twilightforest:lich_trophy",
+            "comment": "",
+            "vardisplay": "lich_trophy_block",
+            "varname": "lich_trophy_block",
+            "enablecomment": false,
+            "onlyComment": false,
+            "entityType": "EntityAgeable"
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 2,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 0.0,
+            "textDefault": "minecraft:gold_block",
+            "comment": "",
+            "vardisplay": "lich_ring_block",
+            "varname": "lich_ring_block",
+            "enablecomment": false,
+            "onlyComment": false,
+            "entityType": "EntityAgeable"
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 2,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 0.0,
+            "textDefault": "twilightforest:lich",
+            "comment": "",
+            "vardisplay": "lich_entity",
+            "varname": "lich_entity",
+            "enablecomment": false,
+            "onlyComment": false,
+            "entityType": "EntityAgeable"
+          }
+        ]
+      },
+      {
+        "category": "Hydra ressurection",
+        "entries": [
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 2,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 0.0,
+            "textDefault": "twilightforest:hydra_trophy",
+            "comment": "",
+            "vardisplay": "hydra_trophy_block",
+            "varname": "hydra_trophy_block",
+            "enablecomment": false,
+            "onlyComment": false,
+            "entityType": "EntityAgeable"
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 2,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 0.0,
+            "textDefault": "minecraft:ancient_debris",
+            "comment": "",
+            "vardisplay": "hydra_ring_block",
+            "varname": "hydra_ring_block",
+            "enablecomment": false,
+            "onlyComment": false,
+            "entityType": "EntityAgeable"
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 2,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 0.0,
+            "textDefault": "twilightforest:hydra",
+            "comment": "",
+            "vardisplay": "hydra_entity",
+            "varname": "hydra_entity",
+            "enablecomment": false,
+            "onlyComment": false,
+            "entityType": "EntityAgeable"
+          }
+        ]
+      },
+      {
+        "category": "Ur-Ghast ressurection",
+        "entries": [
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 2,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 0.0,
+            "textDefault": "twilightforest:ur_ghast_trophy",
+            "comment": "",
+            "vardisplay": "urghast_trophy_block",
+            "varname": "urghast_trophy_block",
+            "enablecomment": false,
+            "onlyComment": false,
+            "entityType": "EntityAgeable"
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 2,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 0.0,
+            "textDefault": "minecraft:crying_obsidian",
+            "comment": "",
+            "vardisplay": "urghast_ring_block",
+            "varname": "urghast_ring_block",
+            "enablecomment": false,
+            "onlyComment": false,
+            "entityType": "EntityAgeable"
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 2,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 0.0,
+            "textDefault": "twilightforest:ur_ghast",
+            "comment": "",
+            "vardisplay": "urghast_entity",
+            "varname": "urghast_entity",
+            "enablecomment": false,
+            "onlyComment": false,
+            "entityType": "EntityAgeable"
+          }
+        ]
+      },
+      {
+        "category": "Snow Queen ressurection",
+        "entries": [
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 2,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 0.0,
+            "textDefault": "twilightforest:snow_queen_trophy",
+            "comment": "",
+            "vardisplay": "sq_trophy_block",
+            "varname": "sq_trophy_block",
+            "enablecomment": false,
+            "onlyComment": false,
+            "entityType": "EntityAgeable"
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 2,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 0.0,
+            "textDefault": "minecraft:lapis_block",
+            "comment": "",
+            "vardisplay": "sq_ring_block",
+            "varname": "sq_ring_block",
+            "enablecomment": false,
+            "onlyComment": false,
+            "entityType": "EntityAgeable"
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 2,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 0.0,
+            "textDefault": "twilightforest:snow_queen",
+            "comment": "",
+            "vardisplay": "sq_entity",
+            "varname": "sq_entity",
+            "enablecomment": false,
+            "onlyComment": false,
+            "entityType": "EntityAgeable"
+          }
+        ]
+      }
+    ],
+    "file": "tf_ressurect_common",
+    "configType": 0
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "dimasic_server:block/lichspawn"
+    }
+  }
+}

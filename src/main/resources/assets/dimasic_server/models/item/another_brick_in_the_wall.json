@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "dimasic_server:items/another_brick_in_the_wall"
+  }
+}

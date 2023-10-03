@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "dimasic_server:lichspawn"
+    },
+    "title": {
+      "translate": "advancements.lichresp.title"
+    },
+    "description": {
+      "translate": "advancements.lichresp.descr"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": true
+  },
+  "criteria": {
+    "lichresp": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "dimasic_server:nagaresp"
+}

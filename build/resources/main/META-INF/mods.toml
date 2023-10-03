@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="dimasic_server"
+version="1.0.0"
+displayName="TF Boss Ressurection "
+credits="-"
+displayURL="https://legacy.curseforge.com/minecraft/mc-mods/dimas-adventures-stuff"
+authors="andrey, niketats"
+
+[[dependencies.dimasic_server]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5]"
+    ordering="NONE"
+    side="BOTH"
+
+
+[[dependencies.dimasic_server]]
+    modId="twilightforest"
+    mandatory=true
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+
+

@@ -1,0 +1,8 @@
+{
+  "parent": "dimasic_server:custom/psarnya",
+  "textures": {
+    "all": "dimasic_server:blocks/psarnya",
+    "particle": "dimasic_server:blocks/psarnya",
+    "1": "dimasic_server:blocks/psarnya"
+  }
+}
