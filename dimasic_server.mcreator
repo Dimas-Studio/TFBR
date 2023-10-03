@@ -1,70 +1,48 @@
 {
   "mod_elements": [
     {
-      "name": "AnotherBrickInTheWall",
-      "type": "musicdisc",
-      "sortid": 12,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "another_brick_in_the_wall",
-      "path": "~/music_discs"
-    },
-    {
-      "name": "Podliva",
-      "type": "item",
-      "sortid": 2,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "podliva"
-    },
-    {
       "name": "Sabudka",
       "type": "block",
-      "sortid": 3,
+      "sortid": 7,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "sabudka"
-    },
-    {
-      "name": "RainbowDimka",
-      "type": "item",
-      "sortid": 1,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rainbow_dimka"
+      "registry_name": "sabudka",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/dimasic_server/models/block/sabudka.json",
+          "src/main/java/dimasicserver/block/SabudkaBlock.java",
+          "src/main/resources/assets/dimasic_server/models/item/sabudka.json",
+          "src/main/resources/assets/dimasic_server/blockstates/sabudka.json"
+        ]
+      }
     },
     {
       "name": "Moon",
       "type": "block",
-      "sortid": 4,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "moon"
-    },
-    {
-      "name": "Poop",
-      "type": "item",
       "sortid": 6,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "poop"
-    },
-    {
-      "name": "Flag",
-      "type": "item",
-      "sortid": 5,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "flag"
+      "registry_name": "moon",
+      "metadata": {
+        "files": [
+          "src/main/java/dimasicserver/block/MoonBlock.java",
+          "src/main/resources/assets/dimasic_server/blockstates/moon.json",
+          "src/main/resources/assets/dimasic_server/models/item/moon.json",
+          "src/main/resources/assets/dimasic_server/models/block/moon.json"
+        ]
+      }
     },
     {
       "name": "Bossrespawn",
       "type": "procedure",
-      "sortid": 15,
+      "sortid": 8,
       "compiles": true,
       "locked_code": false,
       "registry_name": "bossrespawn",
       "metadata": {
+        "files": [
+          "src/main/java/dimasicserver/procedures/BossrespawnProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -93,20 +71,31 @@
     {
       "name": "Nagarespawn",
       "type": "block",
-      "sortid": 7,
+      "sortid": 1,
       "compiles": true,
       "locked_code": false,
       "registry_name": "nagarespawn",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/dimasic_server/models/item/nagarespawn.json",
+          "src/main/resources/assets/dimasic_server/blockstates/nagarespawn.json",
+          "src/main/resources/assets/dimasic_server/models/block/nagarespawn.json",
+          "src/main/java/dimasicserver/block/NagarespawnBlock.java"
+        ]
+      },
       "path": "~/Forest functions"
     },
     {
       "name": "Spawnnaga",
       "type": "procedure",
-      "sortid": 16,
+      "sortid": 9,
       "compiles": true,
       "locked_code": false,
       "registry_name": "spawnnaga",
       "metadata": {
+        "files": [
+          "src/main/java/dimasicserver/procedures/SpawnnagaProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -135,11 +124,14 @@
     {
       "name": "Spawnlich",
       "type": "procedure",
-      "sortid": 17,
+      "sortid": 10,
       "compiles": true,
       "locked_code": false,
       "registry_name": "spawnlich",
       "metadata": {
+        "files": [
+          "src/main/java/dimasicserver/procedures/SpawnlichProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -168,29 +160,48 @@
     {
       "name": "Lichspawn",
       "type": "block",
-      "sortid": 8,
+      "sortid": 2,
       "compiles": true,
       "locked_code": false,
       "registry_name": "lichspawn",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/dimasic_server/blockstates/lichspawn.json",
+          "src/main/resources/assets/dimasic_server/models/block/lichspawn.json",
+          "src/main/resources/assets/dimasic_server/models/item/lichspawn.json",
+          "src/main/java/dimasicserver/block/LichspawnBlock.java"
+        ]
+      },
       "path": "~/Forest functions"
     },
     {
       "name": "Hydraspawn",
       "type": "block",
-      "sortid": 9,
+      "sortid": 3,
       "compiles": true,
       "locked_code": false,
       "registry_name": "hydraspawn",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/dimasic_server/blockstates/hydraspawn.json",
+          "src/main/resources/assets/dimasic_server/models/block/hydraspawn.json",
+          "src/main/resources/assets/dimasic_server/models/item/hydraspawn.json",
+          "src/main/java/dimasicserver/block/HydraspawnBlock.java"
+        ]
+      },
       "path": "~/Forest functions"
     },
     {
       "name": "Spawnhydra",
       "type": "procedure",
-      "sortid": 18,
+      "sortid": 11,
       "compiles": true,
       "locked_code": false,
       "registry_name": "spawnhydra",
       "metadata": {
+        "files": [
+          "src/main/java/dimasicserver/procedures/SpawnhydraProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -219,20 +230,31 @@
     {
       "name": "UrGhastspawn",
       "type": "block",
-      "sortid": 10,
+      "sortid": 4,
       "compiles": true,
       "locked_code": false,
       "registry_name": "ur_ghastspawn",
+      "metadata": {
+        "files": [
+          "src/main/java/dimasicserver/block/UrGhastspawnBlock.java",
+          "src/main/resources/assets/dimasic_server/models/item/ur_ghastspawn.json",
+          "src/main/resources/assets/dimasic_server/models/block/ur_ghastspawn.json",
+          "src/main/resources/assets/dimasic_server/blockstates/ur_ghastspawn.json"
+        ]
+      },
       "path": "~/Forest functions"
     },
     {
       "name": "Spawnurghast",
       "type": "procedure",
-      "sortid": 19,
+      "sortid": 12,
       "compiles": true,
       "locked_code": false,
       "registry_name": "spawnurghast",
       "metadata": {
+        "files": [
+          "src/main/java/dimasicserver/procedures/SpawnurghastProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -261,20 +283,31 @@
     {
       "name": "Snowqueenspawn",
       "type": "block",
-      "sortid": 11,
+      "sortid": 5,
       "compiles": true,
       "locked_code": false,
       "registry_name": "snowqueenspawn",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/dimasic_server/blockstates/snowqueenspawn.json",
+          "src/main/resources/assets/dimasic_server/models/block/snowqueenspawn.json",
+          "src/main/resources/assets/dimasic_server/models/item/snowqueenspawn.json",
+          "src/main/java/dimasicserver/block/SnowqueenspawnBlock.java"
+        ]
+      },
       "path": "~/Forest functions"
     },
     {
       "name": "Spawnsnowqueen",
       "type": "procedure",
-      "sortid": 20,
+      "sortid": 13,
       "compiles": true,
       "locked_code": false,
       "registry_name": "spawnsnowqueen",
       "metadata": {
+        "files": [
+          "src/main/java/dimasicserver/procedures/SpawnsnowqueenProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -303,63 +336,96 @@
     {
       "name": "ServerStuff",
       "type": "tab",
-      "sortid": 21,
+      "sortid": 14,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "server_stuff"
+      "registry_name": "server_stuff",
+      "metadata": {
+        "files": []
+      }
     },
     {
       "name": "Nagaresp",
       "type": "achievement",
-      "sortid": 22,
+      "sortid": 15,
       "compiles": true,
       "locked_code": false,
       "registry_name": "nagaresp",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/dimasic_server/advancements/nagaresp.json"
+        ]
+      },
       "path": "~/achivments"
     },
     {
       "name": "Lichresp",
       "type": "achievement",
-      "sortid": 23,
+      "sortid": 16,
       "compiles": true,
       "locked_code": false,
       "registry_name": "lichresp",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/dimasic_server/advancements/lichresp.json"
+        ]
+      },
       "path": "~/achivments"
     },
     {
       "name": "Hydraresp",
       "type": "achievement",
-      "sortid": 24,
+      "sortid": 17,
       "compiles": true,
       "locked_code": false,
       "registry_name": "hydraresp",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/dimasic_server/advancements/hydraresp.json"
+        ]
+      },
       "path": "~/achivments"
     },
     {
       "name": "Urghastresp",
       "type": "achievement",
-      "sortid": 25,
+      "sortid": 18,
       "compiles": true,
       "locked_code": false,
       "registry_name": "urghastresp",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/dimasic_server/advancements/urghastresp.json"
+        ]
+      },
       "path": "~/achivments"
     },
     {
       "name": "Snawqueenresp",
       "type": "achievement",
-      "sortid": 26,
+      "sortid": 19,
       "compiles": true,
       "locked_code": false,
       "registry_name": "snawqueenresp",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/dimasic_server/advancements/snawqueenresp.json"
+        ]
+      },
       "path": "~/achivments"
     },
     {
       "name": "Config",
       "type": "config",
-      "sortid": 27,
+      "sortid": 20,
       "compiles": true,
       "locked_code": false,
       "registry_name": "config",
+      "metadata": {
+        "files": [
+          "src/main/java/dimasicserver/configuration/ConfigConfiguration.java"
+        ]
+      },
       "path": "~/Forest functions"
     }
   ],
@@ -388,23 +454,18 @@
       "block.dimasic_server.snowqueenspawn": "Snow Queen respawn monument",
       "item.dimasic_structures.podliva": "�������",
       "item.dimasic_structures.another_brick_in_the_wall": "���������",
-      "item.dimasic_server.poop": "Brown gem",
       "block.dimasic_server.sabudka": "Doggy house",
       "advancements.urghastresp.title": "Respawn the Ur-Ghast",
       "block.dimasic_server.hydraspawn": "Hydra respawn monument",
-      "item.dimasic_server.another_brick_in_the_wall": "Music disk",
-      "item.dimasic_server.another_brick_in_the_wall.desc": "Pink Floyd - Another Brick In The Wall",
       "advancements.urghastresp.descr": "Respawn. the. ur-ghast",
       "block.dimasic_server.lichspawn": "Lich respawn monument",
-      "item.dimasic_server.flag": "idk",
       "block.dimasic_server.nagarespawn": "Naga respawn monument",
       "advancements.lichresp.title": "Respawn the Lich",
+      "item_group.dimasic_server.server_stuff": "Twilight Forest Bosses Resurrection",
       "subtitles.another_brick_in_the_wall": "",
       "advancements.snawqueenresp.title": "Respawn the Snaw Queen",
       "config.dimasic_server.config": "tf_ressurect_common",
-      "item.dimasic_server.podliva": "Brown soup",
       "block.dimasic_structures.sabudka": "�������",
-      "item.dimasic_server.rainbow_dimka": "LGBTQ+ heart",
       "block.dimasic_server.ur_ghastspawn": "Ur-Ghast respawn monument",
       "item.dimasic_structures.another_brick_in_the_wall.desc": "Pink Floyd � Another Brick In The Wall"
     }
@@ -412,10 +473,6 @@
   "foldersRoot": {
     "name": "~",
     "children": [
-      {
-        "name": "music_discs",
-        "children": []
-      },
       {
         "name": "Forest functions",
         "children": []
@@ -428,8 +485,8 @@
   },
   "workspaceSettings": {
     "modid": "dimasic_server",
-    "modName": "TF Boss Ressurection ",
-    "version": "1.0.0",
+    "modName": "Twilight Forest Bosses Resurrection",
+    "version": "2.0.0",
     "author": "andrey, niketats",
     "websiteURL": "https://legacy.curseforge.com/minecraft/mc-mods/dimas-adventures-stuff",
     "license": "All Rights Reserved",
@@ -441,10 +498,10 @@
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [],
-    "currentGenerator": "forge-1.16.5",
+    "currentGenerator": "forge-1.19.4",
     "credits": "-",
     "modElementsPackage": "dimasicserver",
     "lockBaseModFiles": false
   },
-  "mcreatorVersion": 202200348217
+  "mcreatorVersion": 202300224119
 }
