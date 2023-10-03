@@ -8,7 +8,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import dimasicserver.configuration.ConfigConfiguration;
 
-@Mod.EventBusSubscriber(modid = "dimasic_server", bus = Mod.EventBusSubscriber.Bus.MOD)
+import dimasicserver.DimasicServerMod;
+
+@Mod.EventBusSubscriber(modid = DimasicServerMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DimasicServerModConfigs {
 	@SubscribeEvent
 	public static void register(FMLConstructModEvent event) {

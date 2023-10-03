@@ -1,8 +1,9 @@
 {
   "parent": "dimasic_server:custom/moon",
   "textures": {
-    "all": "dimasic_server:blocks/moon",
-    "particle": "dimasic_server:blocks/moon",
-    "0": "dimasic_server:blocks/moon"
-  }
+    "all": "dimasic_server:block/moon",
+    "particle": "dimasic_server:block/moon",
+    "0": "dimasic_server:block/moon"
+  },
+  "render_type": "solid"
 }

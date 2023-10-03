@@ -1,8 +1,8 @@
 
 ["Naga resuurection"]
-	naga_trophy_block = "twilightforest:naga_trophy"
-	naga_ring_block = "twilightforest:ironwood_block"
-	naga_entity = "twilightforest:naga"
+	naga_trophy_block = "minecraft:dirt"
+	naga_ring_block = "minecraft:dirt"
+	naga_entity = "minecraft:dirt"
 
 ["Lich ressurection"]
 	lich_trophy_block = "twilightforest:lich_trophy"
