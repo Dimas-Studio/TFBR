@@ -4,11 +4,11 @@ license="All Rights Reserved"
 
 [[mods]]
 modId="dimasic_server"
-version="1.0.0"
-displayName="TF Boss Ressurection "
+version="1.2.0"
+displayName="TFBR"
 credits="-"
 displayURL="https://legacy.curseforge.com/minecraft/mc-mods/dimas-adventures-stuff"
-authors="andrey, niketats"
+authors="andrey66, niketats"
 
 [[dependencies.dimasic_server]]
     modId="minecraft"
@@ -18,11 +18,5 @@ authors="andrey, niketats"
     side="BOTH"
 
 
-[[dependencies.dimasic_server]]
-    modId="twilightforest"
-    mandatory=true
-    versionRange="[0,)"
-    ordering="NONE"
-    side="BOTH"
 
 

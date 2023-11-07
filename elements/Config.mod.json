@@ -4,7 +4,7 @@
   "definition": {
     "pools": [
       {
-        "category": "Naga resuurection",
+        "category": "Naga resurrection",
         "entries": [
           {
             "item": {
@@ -63,7 +63,7 @@
         ]
       },
       {
-        "category": "Lich ressurection",
+        "category": "Lich resurrection",
         "entries": [
           {
             "item": {
@@ -122,7 +122,7 @@
         ]
       },
       {
-        "category": "Hydra ressurection",
+        "category": "Hydra resurrection",
         "entries": [
           {
             "item": {
@@ -181,7 +181,7 @@
         ]
       },
       {
-        "category": "Ur-Ghast ressurection",
+        "category": "Ur-Ghast resurrection",
         "entries": [
           {
             "item": {
@@ -240,7 +240,7 @@
         ]
       },
       {
-        "category": "Snow Queen ressurection",
+        "category": "Snow Queen resurrection",
         "entries": [
           {
             "item": {
@@ -299,7 +299,7 @@
         ]
       }
     ],
-    "file": "tf_ressurect_common",
+    "file": "tfbr__common",
     "configType": 0
   }
 }
