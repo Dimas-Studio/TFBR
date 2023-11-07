@@ -1,7 +1,0 @@
-{
-  "parent": "dimasic_server:custom/flag",
-  "textures": {
-    "0": "dimasic_server:blocks/flag",
-    "particle": "dimasic_server:items/flag"
-  }
-}

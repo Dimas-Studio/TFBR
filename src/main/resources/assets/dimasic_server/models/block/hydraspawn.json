@@ -1,8 +1,9 @@
 {
   "parent": "dimasic_server:custom/respawn_pedestal2",
   "textures": {
-    "all": "dimasic_server:blocks/hydra_spawn",
-    "particle": "dimasic_server:blocks/hydra_spawn",
-    "0": "dimasic_server:blocks/hydra_spawn"
-  }
+    "all": "dimasic_server:block/hydra_spawn",
+    "particle": "dimasic_server:block/hydra_spawn",
+    "0": "dimasic_server:block/hydra_spawn"
+  },
+  "render_type": "solid"
 }
