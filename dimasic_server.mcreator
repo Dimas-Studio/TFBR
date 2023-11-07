@@ -435,7 +435,9 @@
     "license": "All Rights Reserved",
     "disableForgeVersionCheck": true,
     "serverSideOnly": false,
-    "requiredMods": [],
+    "requiredMods": [
+      "twilightforest"
+    ],
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [],

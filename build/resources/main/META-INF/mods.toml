@@ -18,5 +18,11 @@ authors="andrey66, niketats"
     side="BOTH"
 
 
+[[dependencies.dimasic_server]]
+    modId="twilightforest"
+    mandatory=true
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
 
 
