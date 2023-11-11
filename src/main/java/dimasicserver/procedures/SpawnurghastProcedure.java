@@ -24,8 +24,6 @@ import net.minecraft.advancements.Advancement;
 
 import java.util.Map;
 
-import dimasicserver.configuration.ConfigConfiguration;
-
 import dimasicserver.DimasicServerMod;
 
 public class SpawnurghastProcedure {
@@ -35,8 +33,8 @@ public class SpawnurghastProcedure {
 		double F = 0;
 		BlockState central = Blocks.AIR.defaultBlockState();
 		BlockState ring = Blocks.AIR.defaultBlockState();
-		central = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ConfigConfiguration.URGHAST_TROPHY_BLOCK.get())).defaultBlockState();
-		ring = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ConfigConfiguration.URGHAST_RING_BLOCK.get())).defaultBlockState();
+		central = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("twilightforest:ur_ghast_trophy")).defaultBlockState();
+		ring = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("minecraft:crying_obsidian")).defaultBlockState();
 		F = 0;
 		if ((world.getBlockState(BlockPos.containing(x, y + 1, z))) == central) {
 			F = F + 1;
@@ -243,7 +241,7 @@ public class SpawnurghastProcedure {
 				if (world instanceof ServerLevel _level)
 					_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, (y + 3), z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
 							("setblock " + (new java.text.DecimalFormat("######## ").format(x) + ""
-									+ (new java.text.DecimalFormat("######## ").format(y) + "" + (new java.text.DecimalFormat("######## ").format(z) + "twilightforest:boss_spawner_ur_ghast")))));
+									+ (new java.text.DecimalFormat("######## ").format(y) + "" + (new java.text.DecimalFormat("######## ").format(z) + "twilightforest:ur_ghast_boss_spawner")))));
 				if (entity instanceof ServerPlayer _player) {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("dimasic_server:urghastresp"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);

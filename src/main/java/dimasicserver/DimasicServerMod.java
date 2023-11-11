@@ -38,6 +38,7 @@ import java.util.Collection;
 import java.util.ArrayList;
 import java.util.AbstractMap;
 
+import dimasicserver.init.DimasicServerModTabs;
 import dimasicserver.init.DimasicServerModSounds;
 import dimasicserver.init.DimasicServerModItems;
 import dimasicserver.init.DimasicServerModBlocks;
@@ -52,7 +53,10 @@ public class DimasicServerMod {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		DimasicServerModSounds.REGISTRY.register(bus);
 		DimasicServerModBlocks.REGISTRY.register(bus);
+
 		DimasicServerModItems.REGISTRY.register(bus);
+
+		DimasicServerModTabs.REGISTRY.register(bus);
 
 	}
 

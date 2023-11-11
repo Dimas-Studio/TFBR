@@ -23,8 +23,6 @@ import net.minecraft.advancements.Advancement;
 
 import java.util.Map;
 
-import dimasicserver.configuration.ConfigConfiguration;
-
 import dimasicserver.DimasicServerMod;
 
 public class SpawnlichProcedure {
@@ -34,8 +32,8 @@ public class SpawnlichProcedure {
 		double F = 0;
 		BlockState central = Blocks.AIR.defaultBlockState();
 		BlockState ring = Blocks.AIR.defaultBlockState();
-		central = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ConfigConfiguration.LICH_TROPHY_BLOCK.get())).defaultBlockState();
-		ring = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ConfigConfiguration.LICH_RING_BLOCK.get())).defaultBlockState();
+		central = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("twilightforest:lich_trophy")).defaultBlockState();
+		ring = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("minecraft:gold_block")).defaultBlockState();
 		F = 0;
 		if ((world.getBlockState(BlockPos.containing(x, y + 1, z))) == central) {
 			F = F + 1;
@@ -227,7 +225,7 @@ public class SpawnlichProcedure {
 				}
 				if (world instanceof ServerLevel _level)
 					_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(), ("setblock "
-							+ (new java.text.DecimalFormat("######## ").format(x) + "" + (new java.text.DecimalFormat("######## ").format(y) + "" + (new java.text.DecimalFormat("######## ").format(z) + "twilightforest:boss_spawner_lich")))));
+							+ (new java.text.DecimalFormat("######## ").format(x) + "" + (new java.text.DecimalFormat("######## ").format(y) + "" + (new java.text.DecimalFormat("######## ").format(z) + "twilightforest:lich_boss_spawner")))));
 				if (entity instanceof ServerPlayer _player) {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("dimasic_server:lichresp"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
