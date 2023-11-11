@@ -1,10 +1,10 @@
 modLoader="javafml"
-loaderVersion="[45,)"
+loaderVersion="[43,)"
 license="All Rights Reserved"
 
 [[mods]]
 modId="dimasic_server"
-version="2.1.1"
+version="2.2"
 displayName="TFBR"
 credits="-"
 displayURL="https://legacy.curseforge.com/minecraft/mc-mods/dimas-adventures-stuff"
@@ -13,7 +13,7 @@ authors="andrey66, niketats"
 [[dependencies.dimasic_server]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19.4]"
+    versionRange="[1.19.2]"
     ordering="NONE"
     side="BOTH"
 

@@ -15,5 +15,5 @@ import dimasicserver.DimasicServerMod;
 
 public class DimasicServerModSounds {
 	public static final DeferredRegister<SoundEvent> REGISTRY = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, DimasicServerMod.MODID);
-	public static final RegistryObject<SoundEvent> ANOTHER_BRICK_IN_THE_WALL = REGISTRY.register("another_brick_in_the_wall", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("dimasic_server", "another_brick_in_the_wall")));
+	public static final RegistryObject<SoundEvent> ANOTHER_BRICK_IN_THE_WALL = REGISTRY.register("another_brick_in_the_wall", () -> new SoundEvent(new ResourceLocation("dimasic_server", "another_brick_in_the_wall")));
 }

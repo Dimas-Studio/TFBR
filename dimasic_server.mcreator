@@ -507,7 +507,7 @@
   "workspaceSettings": {
     "modid": "dimasic_server",
     "modName": "TFBR",
-    "version": "2.1.1",
+    "version": "2.2",
     "author": "andrey66, niketats",
     "websiteURL": "https://legacy.curseforge.com/minecraft/mc-mods/dimas-adventures-stuff",
     "license": "All Rights Reserved",
@@ -519,7 +519,7 @@
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [],
-    "currentGenerator": "forge-1.19.4",
+    "currentGenerator": "forge-1.19.2",
     "credits": "-",
     "modElementsPackage": "dimasicserver",
     "lockBaseModFiles": false
