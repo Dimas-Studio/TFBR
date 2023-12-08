@@ -478,7 +478,7 @@
       "block.dimasic_server.lichspawn": "Lich respawn monument",
       "block.dimasic_server.nagarespawn": "Naga respawn monument",
       "advancements.lichresp.title": "Respawn the Lich",
-      "item_group.dimasic_server.server_stuff": "Twilight Forest Bosses Resurrection",
+      "item_group.dimasic_server.server_stuff": "Twilight Forest Bosses: Resurrection",
       "subtitles.another_brick_in_the_wall": "",
       "advancements.snawqueenresp.title": "Respawn the Snow Queen",
       "config.dimasic_server.config": "tfbr-common",
@@ -507,7 +507,7 @@
   "workspaceSettings": {
     "modid": "dimasic_server",
     "modName": "TFBR",
-    "version": "2.2",
+    "version": "3.1",
     "author": "andrey66, niketats",
     "websiteURL": "https://legacy.curseforge.com/minecraft/mc-mods/dimas-adventures-stuff",
     "license": "All Rights Reserved",
@@ -519,10 +519,10 @@
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [],
-    "currentGenerator": "forge-1.19.2",
+    "currentGenerator": "forge-1.20.1",
     "credits": "-",
     "modElementsPackage": "dimasicserver",
     "lockBaseModFiles": false
   },
-  "mcreatorVersion": 202300224119
+  "mcreatorVersion": 202300336712
 }

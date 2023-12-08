@@ -50,11 +50,13 @@ public class DimasicServerMod {
 
 	public DimasicServerMod() {
 		MinecraftForge.EVENT_BUS.register(this);
-		DimasicServerModTabs.load();
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		DimasicServerModSounds.REGISTRY.register(bus);
 		DimasicServerModBlocks.REGISTRY.register(bus);
+
 		DimasicServerModItems.REGISTRY.register(bus);
+
+		DimasicServerModTabs.REGISTRY.register(bus);
 
 	}
 

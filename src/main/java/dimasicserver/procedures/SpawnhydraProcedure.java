@@ -9,7 +9,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
@@ -23,7 +22,6 @@ import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.advancements.Advancement;
 
 import java.util.Map;
-import java.util.Iterator;
 
 import dimasicserver.configuration.ConfigConfiguration;
 
@@ -39,37 +37,37 @@ public class SpawnhydraProcedure {
 		central = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ConfigConfiguration.HYDRA_TROPHY_BLOCK.get())).defaultBlockState();
 		ring = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ConfigConfiguration.HYDRA_RING_BLOCK.get())).defaultBlockState();
 		F = 0;
-		if ((world.getBlockState(new BlockPos(x, y + 1, z))) == central) {
+		if ((world.getBlockState(BlockPos.containing(x, y + 1, z))) == central) {
 			F = F + 1;
 		}
-		if ((world.getBlockState(new BlockPos(x + 3, y, z))) == ring) {
+		if ((world.getBlockState(BlockPos.containing(x + 3, y, z))) == ring) {
 			F = F + 1;
 		}
-		if ((world.getBlockState(new BlockPos(x - 3, y, z))) == ring) {
+		if ((world.getBlockState(BlockPos.containing(x - 3, y, z))) == ring) {
 			F = F + 1;
 		}
-		if ((world.getBlockState(new BlockPos(x, y, z + 3))) == ring) {
+		if ((world.getBlockState(BlockPos.containing(x, y, z + 3))) == ring) {
 			F = F + 1;
 		}
-		if ((world.getBlockState(new BlockPos(x, y, z - 3))) == ring) {
+		if ((world.getBlockState(BlockPos.containing(x, y, z - 3))) == ring) {
 			F = F + 1;
 		}
-		if ((world.getBlockState(new BlockPos(x + 2, y, z + 2))) == ring) {
+		if ((world.getBlockState(BlockPos.containing(x + 2, y, z + 2))) == ring) {
 			F = F + 1;
 		}
-		if ((world.getBlockState(new BlockPos(x + 2, y, z - 2))) == ring) {
+		if ((world.getBlockState(BlockPos.containing(x + 2, y, z - 2))) == ring) {
 			F = F + 1;
 		}
-		if ((world.getBlockState(new BlockPos(x - 2, y, z + 2))) == ring) {
+		if ((world.getBlockState(BlockPos.containing(x - 2, y, z + 2))) == ring) {
 			F = F + 1;
 		}
-		if ((world.getBlockState(new BlockPos(x - 2, y, z - 2))) == ring) {
+		if ((world.getBlockState(BlockPos.containing(x - 2, y, z - 2))) == ring) {
 			F = F + 1;
 		}
 		if (F == 9) {
-			world.setBlock(new BlockPos(x, y, z), Blocks.BEDROCK.defaultBlockState(), 3);
+			world.setBlock(BlockPos.containing(x, y, z), Blocks.BEDROCK.defaultBlockState(), 3);
 			{
-				BlockPos _bp = new BlockPos(x, y + 1, z);
+				BlockPos _bp = BlockPos.containing(x, y + 1, z);
 				BlockState _bs = Blocks.AIR.defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -83,7 +81,7 @@ public class SpawnhydraProcedure {
 				world.setBlock(_bp, _bs, 3);
 			}
 			{
-				BlockPos _bp = new BlockPos(x + 3, y, z);
+				BlockPos _bp = BlockPos.containing(x + 3, y, z);
 				BlockState _bs = Blocks.AIR.defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -97,7 +95,7 @@ public class SpawnhydraProcedure {
 				world.setBlock(_bp, _bs, 3);
 			}
 			{
-				BlockPos _bp = new BlockPos(x - 3, y, z);
+				BlockPos _bp = BlockPos.containing(x - 3, y, z);
 				BlockState _bs = Blocks.AIR.defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -111,7 +109,7 @@ public class SpawnhydraProcedure {
 				world.setBlock(_bp, _bs, 3);
 			}
 			{
-				BlockPos _bp = new BlockPos(x, y, z + 3);
+				BlockPos _bp = BlockPos.containing(x, y, z + 3);
 				BlockState _bs = Blocks.AIR.defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -125,7 +123,7 @@ public class SpawnhydraProcedure {
 				world.setBlock(_bp, _bs, 3);
 			}
 			{
-				BlockPos _bp = new BlockPos(x, y, z - 3);
+				BlockPos _bp = BlockPos.containing(x, y, z - 3);
 				BlockState _bs = Blocks.AIR.defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -139,7 +137,7 @@ public class SpawnhydraProcedure {
 				world.setBlock(_bp, _bs, 3);
 			}
 			{
-				BlockPos _bp = new BlockPos(x + 2, y, z + 2);
+				BlockPos _bp = BlockPos.containing(x + 2, y, z + 2);
 				BlockState _bs = Blocks.AIR.defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -153,7 +151,7 @@ public class SpawnhydraProcedure {
 				world.setBlock(_bp, _bs, 3);
 			}
 			{
-				BlockPos _bp = new BlockPos(x + 2, y, z - 2);
+				BlockPos _bp = BlockPos.containing(x + 2, y, z - 2);
 				BlockState _bs = Blocks.AIR.defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -167,7 +165,7 @@ public class SpawnhydraProcedure {
 				world.setBlock(_bp, _bs, 3);
 			}
 			{
-				BlockPos _bp = new BlockPos(x - 2, y, z - 2);
+				BlockPos _bp = BlockPos.containing(x - 2, y, z - 2);
 				BlockState _bs = Blocks.AIR.defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -181,7 +179,7 @@ public class SpawnhydraProcedure {
 				world.setBlock(_bp, _bs, 3);
 			}
 			{
-				BlockPos _bp = new BlockPos(x - 2, y, z + 2);
+				BlockPos _bp = BlockPos.containing(x - 2, y, z + 2);
 				BlockState _bs = Blocks.AIR.defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -214,7 +212,7 @@ public class SpawnhydraProcedure {
 				_level.sendParticles(ParticleTypes.FLAME, x, y, z, 200, 0, 0, 0, 2);
 			DimasicServerMod.queueServerWork(40, () -> {
 				{
-					BlockPos _bp = new BlockPos(x, y + 1, z);
+					BlockPos _bp = BlockPos.containing(x, y + 1, z);
 					BlockState _bs = Blocks.AIR.defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -234,15 +232,14 @@ public class SpawnhydraProcedure {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("dimasic_server:hydraresp"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {
-						Iterator _iterator = _ap.getRemainingCriteria().iterator();
-						while (_iterator.hasNext())
-							_player.getAdvancements().award(_adv, (String) _iterator.next());
+						for (String criteria : _ap.getRemainingCriteria())
+							_player.getAdvancements().award(_adv, criteria);
 					}
 				}
 			});
 		} else {
 			if (world instanceof Level _level && !_level.isClientSide())
-				_level.explode(null, x, y, z, 10, Explosion.BlockInteraction.DESTROY);
+				_level.explode(null, x, y, z, 10, Level.ExplosionInteraction.BLOCK);
 		}
 	}
 }
