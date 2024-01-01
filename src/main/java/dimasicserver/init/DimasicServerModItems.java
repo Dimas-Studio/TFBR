@@ -1,0 +1,43 @@
+
+/*
+ *    MCreator note: This file will be REGENERATED on each build.
+ */
+package dimasicserver.init;
+
+import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.DeferredRegister;
+
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.BlockItem;
+
+import dimasicserver.item.RainbowDimkaItem;
+import dimasicserver.item.PoopItem;
+import dimasicserver.item.PodlivaItem;
+import dimasicserver.item.FlagItem;
+import dimasicserver.item.AnotherBrickInTheWallItem;
+
+import dimasicserver.DimasicServerMod;
+
+public class DimasicServerModItems {
+	public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, DimasicServerMod.MODID);
+	public static final RegistryObject<Item> RAINBOW_DIMKA = REGISTRY.register("rainbow_dimka", () -> new RainbowDimkaItem());
+	public static final RegistryObject<Item> PODLIVA = REGISTRY.register("podliva", () -> new PodlivaItem());
+	public static final RegistryObject<Item> SABUDKA = block(DimasicServerModBlocks.SABUDKA, DimasicServerModTabs.TAB_SERVER_STUFF);
+	public static final RegistryObject<Item> MOON = block(DimasicServerModBlocks.MOON, DimasicServerModTabs.TAB_SERVER_STUFF);
+	public static final RegistryObject<Item> FLAG = REGISTRY.register("flag", () -> new FlagItem());
+	public static final RegistryObject<Item> POOP = REGISTRY.register("poop", () -> new PoopItem());
+	public static final RegistryObject<Item> NAGARESPAWN = block(DimasicServerModBlocks.NAGARESPAWN, DimasicServerModTabs.TAB_SERVER_STUFF);
+	public static final RegistryObject<Item> LICHSPAWN = block(DimasicServerModBlocks.LICHSPAWN, DimasicServerModTabs.TAB_SERVER_STUFF);
+	public static final RegistryObject<Item> HYDRASPAWN = block(DimasicServerModBlocks.HYDRASPAWN, DimasicServerModTabs.TAB_SERVER_STUFF);
+	public static final RegistryObject<Item> UR_GHASTSPAWN = block(DimasicServerModBlocks.UR_GHASTSPAWN, DimasicServerModTabs.TAB_SERVER_STUFF);
+	public static final RegistryObject<Item> SNOWQUEENSPAWN = block(DimasicServerModBlocks.SNOWQUEENSPAWN, DimasicServerModTabs.TAB_SERVER_STUFF);
+	public static final RegistryObject<Item> ANOTHER_BRICK_IN_THE_WALL = REGISTRY.register("another_brick_in_the_wall",
+			() -> new AnotherBrickInTheWallItem());
+
+	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
+		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
+	}
+}

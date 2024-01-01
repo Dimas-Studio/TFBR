@@ -1,0 +1,450 @@
+{
+  "mod_elements": [
+    {
+      "name": "AnotherBrickInTheWall",
+      "type": "musicdisc",
+      "sortid": 12,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "another_brick_in_the_wall",
+      "path": "~/music_discs"
+    },
+    {
+      "name": "Podliva",
+      "type": "item",
+      "sortid": 2,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "podliva"
+    },
+    {
+      "name": "Sabudka",
+      "type": "block",
+      "sortid": 3,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sabudka"
+    },
+    {
+      "name": "RainbowDimka",
+      "type": "item",
+      "sortid": 1,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rainbow_dimka"
+    },
+    {
+      "name": "Moon",
+      "type": "block",
+      "sortid": 4,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "moon"
+    },
+    {
+      "name": "Poop",
+      "type": "item",
+      "sortid": 6,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "poop"
+    },
+    {
+      "name": "Flag",
+      "type": "item",
+      "sortid": 5,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "flag"
+    },
+    {
+      "name": "Bossrespawn",
+      "type": "procedure",
+      "sortid": 15,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bossrespawn",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Forest functions"
+    },
+    {
+      "name": "Nagarespawn",
+      "type": "block",
+      "sortid": 7,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nagarespawn",
+      "path": "~/Forest functions"
+    },
+    {
+      "name": "Spawnnaga",
+      "type": "procedure",
+      "sortid": 16,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spawnnaga",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Forest functions"
+    },
+    {
+      "name": "Spawnlich",
+      "type": "procedure",
+      "sortid": 17,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spawnlich",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Forest functions"
+    },
+    {
+      "name": "Lichspawn",
+      "type": "block",
+      "sortid": 8,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "lichspawn",
+      "path": "~/Forest functions"
+    },
+    {
+      "name": "Hydraspawn",
+      "type": "block",
+      "sortid": 9,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hydraspawn",
+      "path": "~/Forest functions"
+    },
+    {
+      "name": "Spawnhydra",
+      "type": "procedure",
+      "sortid": 18,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spawnhydra",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Forest functions"
+    },
+    {
+      "name": "UrGhastspawn",
+      "type": "block",
+      "sortid": 10,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ur_ghastspawn",
+      "path": "~/Forest functions"
+    },
+    {
+      "name": "Spawnurghast",
+      "type": "procedure",
+      "sortid": 19,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spawnurghast",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Forest functions"
+    },
+    {
+      "name": "Snowqueenspawn",
+      "type": "block",
+      "sortid": 11,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "snowqueenspawn",
+      "path": "~/Forest functions"
+    },
+    {
+      "name": "Spawnsnowqueen",
+      "type": "procedure",
+      "sortid": 20,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spawnsnowqueen",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Forest functions"
+    },
+    {
+      "name": "ServerStuff",
+      "type": "tab",
+      "sortid": 21,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "server_stuff"
+    },
+    {
+      "name": "Nagaresp",
+      "type": "achievement",
+      "sortid": 22,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nagaresp",
+      "path": "~/achivments"
+    },
+    {
+      "name": "Lichresp",
+      "type": "achievement",
+      "sortid": 23,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "lichresp",
+      "path": "~/achivments"
+    },
+    {
+      "name": "Hydraresp",
+      "type": "achievement",
+      "sortid": 24,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hydraresp",
+      "path": "~/achivments"
+    },
+    {
+      "name": "Urghastresp",
+      "type": "achievement",
+      "sortid": 25,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "urghastresp",
+      "path": "~/achivments"
+    },
+    {
+      "name": "Snawqueenresp",
+      "type": "achievement",
+      "sortid": 26,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "snawqueenresp",
+      "path": "~/achivments"
+    },
+    {
+      "name": "Config",
+      "type": "config",
+      "sortid": 27,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "config",
+      "path": "~/Forest functions"
+    }
+  ],
+  "variable_elements": [],
+  "sound_elements": [
+    {
+      "name": "another_brick_in_the_wall",
+      "files": [
+        "another_brick_in_the_wall_-_2001_remastered_version"
+      ],
+      "category": "record",
+      "subtitle": ""
+    }
+  ],
+  "language_map": {
+    "en_us": {
+      "advancements.nagaresp.descr": "Respawn. the. naga",
+      "advancements.lichresp.descr": "Respawn. the. lich",
+      "advancements.snawqueenresp.descr": "Respawn. the. snow queen",
+      "itemGroup.tabserver_stuff": "Twilight Forest Bosses Resurrection",
+      "advancements.nagaresp.title": "Respawn the Naga",
+      "block.dimasic_server.moon": "Moon",
+      "block.dimasic_structures.bigopiano": "Big Piano",
+      "advancements.hydraresp.title": "Respawn the Hydra",
+      "advancements.hydraresp.descr": "Respawn. the. hydra",
+      "block.dimasic_server.snowqueenspawn": "Snow Queen respawn monument",
+      "item.dimasic_structures.podliva": "�������",
+      "item.dimasic_structures.another_brick_in_the_wall": "���������",
+      "item.dimasic_server.poop": "Brown gem",
+      "block.dimasic_server.sabudka": "Doggy house",
+      "advancements.urghastresp.title": "Respawn the Ur-Ghast",
+      "block.dimasic_server.hydraspawn": "Hydra respawn monument",
+      "item.dimasic_server.another_brick_in_the_wall": "Music disk",
+      "item.dimasic_server.another_brick_in_the_wall.desc": "Pink Floyd - Another Brick In The Wall",
+      "advancements.urghastresp.descr": "Respawn. the. ur-ghast",
+      "block.dimasic_server.lichspawn": "Lich respawn monument",
+      "item.dimasic_server.flag": "idk",
+      "block.dimasic_server.nagarespawn": "Naga respawn monument",
+      "advancements.lichresp.title": "Respawn the Lich",
+      "subtitles.another_brick_in_the_wall": "",
+      "advancements.snawqueenresp.title": "Respawn the Snow Queen",
+      "config.dimasic_server.config": "tfbr-common",
+      "item.dimasic_server.podliva": "Brown soup",
+      "block.dimasic_structures.sabudka": "�������",
+      "item.dimasic_server.rainbow_dimka": "LGBTQ+ heart",
+      "block.dimasic_server.ur_ghastspawn": "Ur-Ghast respawn monument",
+      "item.dimasic_structures.another_brick_in_the_wall.desc": "Pink Floyd � Another Brick In The Wall"
+    }
+  },
+  "foldersRoot": {
+    "name": "~",
+    "children": [
+      {
+        "name": "music_discs",
+        "children": []
+      },
+      {
+        "name": "Forest functions",
+        "children": []
+      },
+      {
+        "name": "achivments",
+        "children": []
+      }
+    ]
+  },
+  "workspaceSettings": {
+    "modid": "dimasic_server",
+    "modName": "TFBR",
+    "version": "1.2.0",
+    "author": "andrey66, niketats",
+    "websiteURL": "https://legacy.curseforge.com/minecraft/mc-mods/dimas-adventures-stuff",
+    "license": "All Rights Reserved",
+    "disableForgeVersionCheck": true,
+    "serverSideOnly": false,
+    "requiredMods": [
+      "twilightforest"
+    ],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [],
+    "currentGenerator": "forge-1.18.2",
+    "credits": "-",
+    "modElementsPackage": "dimasicserver",
+    "lockBaseModFiles": false
+  },
+  "mcreatorVersion": 202200348217
+}

@@ -1,61 +1,30 @@
 
 package dimasicserver.item;
 
-import net.minecraftforge.registries.ObjectHolder;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Item;
 
-import net.minecraft.item.UseAction;
-import net.minecraft.item.Rarity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Item;
-import net.minecraft.block.BlockState;
+import dimasicserver.init.DimasicServerModTabs;
 
-import dimasicserver.itemgroup.ServerStuffItemGroup;
-
-import dimasicserver.DimasicServerModElements;
-
-@DimasicServerModElements.ModElement.Tag
-public class RainbowDimkaItem extends DimasicServerModElements.ModElement {
-	@ObjectHolder("dimasic_server:rainbow_dimka")
-	public static final Item block = null;
-
-	public RainbowDimkaItem(DimasicServerModElements instance) {
-		super(instance, 1);
+public class RainbowDimkaItem extends Item {
+	public RainbowDimkaItem() {
+		super(new Item.Properties().tab(DimasicServerModTabs.TAB_SERVER_STUFF).stacksTo(64).fireResistant().rarity(Rarity.EPIC));
 	}
 
 	@Override
-	public void initElements() {
-		elements.items.add(() -> new ItemCustom());
+	public UseAnim getUseAnimation(ItemStack itemstack) {
+		return UseAnim.EAT;
 	}
 
-	public static class ItemCustom extends Item {
-		public ItemCustom() {
-			super(new Item.Properties().group(ServerStuffItemGroup.tab).maxStackSize(64).isImmuneToFire().rarity(Rarity.EPIC));
-			setRegistryName("rainbow_dimka");
-		}
+	@Override
+	public boolean hasCraftingRemainingItem() {
+		return true;
+	}
 
-		@Override
-		public UseAction getUseAction(ItemStack itemstack) {
-			return UseAction.EAT;
-		}
-
-		@Override
-		public boolean hasContainerItem() {
-			return true;
-		}
-
-		@Override
-		public ItemStack getContainerItem(ItemStack itemstack) {
-			return new ItemStack(this);
-		}
-
-		@Override
-		public int getItemEnchantability() {
-			return 0;
-		}
-
-		@Override
-		public float getDestroySpeed(ItemStack par1ItemStack, BlockState par2Block) {
-			return 1F;
-		}
+	@Override
+	public ItemStack getContainerItem(ItemStack itemstack) {
+		return new ItemStack(this);
 	}
 }
