@@ -1,9 +1,0 @@
-{
-  "parent": "dimasic_server:custom/psarnya",
-  "textures": {
-    "all": "dimasic_server:block/psarnya",
-    "particle": "dimasic_server:block/psarnya",
-    "1": "dimasic_server:block/psarnya"
-  },
-  "render_type": "solid"
-}
