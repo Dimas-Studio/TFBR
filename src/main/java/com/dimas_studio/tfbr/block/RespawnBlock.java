@@ -25,8 +25,8 @@ import java.util.Collections;
 
 
 public class RespawnBlock extends Block {
-	public RespawnBlock() {
-		super(Properties.copy(Blocks.BEDROCK).sound(SoundType.STONE).strength(-1, 3600000).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+	public RespawnBlock(BlockBehaviour.Properties p_49795_) {
+		super(p_49795_.noOcclusion());
 	}
 
 	@Override
