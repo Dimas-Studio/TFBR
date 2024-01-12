@@ -1,10 +1,10 @@
 package dimasicserver.procedures;
 
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.bus.api.Event;
+import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.Vec2;
@@ -37,25 +37,25 @@ public class BossrespawnProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals(ConfigConfiguration.NAGA_ENTITY.get())) {
+		if ((BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString()).equals(ConfigConfiguration.NAGA_ENTITY.get())) {
 			if (world instanceof ServerLevel _level)
 				_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
 						("setblock " + (new java.text.DecimalFormat("######## ").format(x) + "" + (new java.text.DecimalFormat("### ").format(y) + "" + (new java.text.DecimalFormat("######## ").format(z) + "dimasic_server:nagarespawn")))));
 			DimasicServerMod.LOGGER.info(entity.getDisplayName().getString());
-		} else if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals(ConfigConfiguration.LICH_ENTITY.get())) {
+		} else if ((BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString()).equals(ConfigConfiguration.LICH_ENTITY.get())) {
 			if (world instanceof ServerLevel _level)
 				_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, (y - 1), z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
 						("setblock " + (new java.text.DecimalFormat("######## ").format(x) + "" + (new java.text.DecimalFormat("### ").format(y) + "" + (new java.text.DecimalFormat("######## ").format(z) + "dimasic_server:lichspawn")))));
 			DimasicServerMod.LOGGER.info(entity.getDisplayName().getString());
-		} else if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals(ConfigConfiguration.HYDRA_ENTITY.get())) {
+		} else if ((BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString()).equals(ConfigConfiguration.HYDRA_ENTITY.get())) {
 			if (world instanceof ServerLevel _level)
 				_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
 						("setblock " + (new java.text.DecimalFormat("######## ").format(x) + "" + (new java.text.DecimalFormat("### ").format(y) + "" + (new java.text.DecimalFormat("######## ").format(z) + "dimasic_server:hydraspawn")))));
-		} else if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals(ConfigConfiguration.URGHAST_ENTITY.get())) {
+		} else if ((BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString()).equals(ConfigConfiguration.URGHAST_ENTITY.get())) {
 			if (world instanceof ServerLevel _level)
 				_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
 						("setblock " + (new java.text.DecimalFormat("######## ").format(x) + "" + (new java.text.DecimalFormat("### ").format(y) + "" + (new java.text.DecimalFormat("######## ").format(z) + "dimasic_server:ur_ghastspawn")))));
-		} else if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals(ConfigConfiguration.SQ_ENTITY.get())) {
+		} else if ((BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString()).equals(ConfigConfiguration.SQ_ENTITY.get())) {
 			if (world instanceof ServerLevel _level)
 				_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
 						("setblock " + (new java.text.DecimalFormat("######## ").format(x) + "" + (new java.text.DecimalFormat("### ").format(y) + "" + (new java.text.DecimalFormat("######## ").format(z) + "dimasic_server:snowqueenspawn")))));

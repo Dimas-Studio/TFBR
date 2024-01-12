@@ -16,15 +16,16 @@ package dimasicserver;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-import net.minecraftforge.network.simple.SimpleChannel;
-import net.minecraftforge.network.NetworkRegistry;
-import net.minecraftforge.network.NetworkEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.neoforged.neoforge.network.simple.SimpleChannel;
+import net.neoforged.neoforge.network.NetworkRegistry;
+import net.neoforged.neoforge.network.NetworkEvent;
+import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.event.TickEvent;
+import net.neoforged.neoforge.common.NeoForge;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.FriendlyByteBuf;
@@ -49,13 +50,11 @@ public class DimasicServerMod {
 	public static final String MODID = "dimasic_server";
 
 	public DimasicServerMod() {
-		MinecraftForge.EVENT_BUS.register(this);
+		NeoForge.EVENT_BUS.register(this);
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		DimasicServerModSounds.REGISTRY.register(bus);
 		DimasicServerModBlocks.REGISTRY.register(bus);
-
 		DimasicServerModItems.REGISTRY.register(bus);
-
 		DimasicServerModTabs.REGISTRY.register(bus);
 
 	}

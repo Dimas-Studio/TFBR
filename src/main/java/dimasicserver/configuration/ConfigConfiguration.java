@@ -1,25 +1,25 @@
 package dimasicserver.configuration;
 
-import net.minecraftforge.common.ForgeConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class ConfigConfiguration {
-	public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
-	public static final ForgeConfigSpec SPEC;
-	public static final ForgeConfigSpec.ConfigValue<String> NAGA_TROPHY_BLOCK;
-	public static final ForgeConfigSpec.ConfigValue<String> NAGA_RING_BLOCK;
-	public static final ForgeConfigSpec.ConfigValue<String> NAGA_ENTITY;
-	public static final ForgeConfigSpec.ConfigValue<String> LICH_TROPHY_BLOCK;
-	public static final ForgeConfigSpec.ConfigValue<String> LICH_RING_BLOCK;
-	public static final ForgeConfigSpec.ConfigValue<String> LICH_ENTITY;
-	public static final ForgeConfigSpec.ConfigValue<String> HYDRA_TROPHY_BLOCK;
-	public static final ForgeConfigSpec.ConfigValue<String> HYDRA_RING_BLOCK;
-	public static final ForgeConfigSpec.ConfigValue<String> HYDRA_ENTITY;
-	public static final ForgeConfigSpec.ConfigValue<String> URGHAST_TROPHY_BLOCK;
-	public static final ForgeConfigSpec.ConfigValue<String> URGHAST_RING_BLOCK;
-	public static final ForgeConfigSpec.ConfigValue<String> URGHAST_ENTITY;
-	public static final ForgeConfigSpec.ConfigValue<String> SQ_TROPHY_BLOCK;
-	public static final ForgeConfigSpec.ConfigValue<String> SQ_RING_BLOCK;
-	public static final ForgeConfigSpec.ConfigValue<String> SQ_ENTITY;
+	public static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
+	public static final ModConfigSpec SPEC;
+	public static final ModConfigSpec.ConfigValue<String> NAGA_TROPHY_BLOCK;
+	public static final ModConfigSpec.ConfigValue<String> NAGA_RING_BLOCK;
+	public static final ModConfigSpec.ConfigValue<String> NAGA_ENTITY;
+	public static final ModConfigSpec.ConfigValue<String> LICH_TROPHY_BLOCK;
+	public static final ModConfigSpec.ConfigValue<String> LICH_RING_BLOCK;
+	public static final ModConfigSpec.ConfigValue<String> LICH_ENTITY;
+	public static final ModConfigSpec.ConfigValue<String> HYDRA_TROPHY_BLOCK;
+	public static final ModConfigSpec.ConfigValue<String> HYDRA_RING_BLOCK;
+	public static final ModConfigSpec.ConfigValue<String> HYDRA_ENTITY;
+	public static final ModConfigSpec.ConfigValue<String> URGHAST_TROPHY_BLOCK;
+	public static final ModConfigSpec.ConfigValue<String> URGHAST_RING_BLOCK;
+	public static final ModConfigSpec.ConfigValue<String> URGHAST_ENTITY;
+	public static final ModConfigSpec.ConfigValue<String> SQ_TROPHY_BLOCK;
+	public static final ModConfigSpec.ConfigValue<String> SQ_RING_BLOCK;
+	public static final ModConfigSpec.ConfigValue<String> SQ_ENTITY;
 	static {
 		BUILDER.push("Naga resurrection");
 		NAGA_TROPHY_BLOCK = BUILDER.define("naga_trophy_block", "twilightforest:naga_trophy");

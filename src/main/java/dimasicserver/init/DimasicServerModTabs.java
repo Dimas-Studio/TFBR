@@ -4,8 +4,10 @@
  */
 package dimasicserver.init;
 
-import net.minecraftforge.registries.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.neoforged.neoforge.registries.RegisterEvent;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.CreativeModeTab;
@@ -15,8 +17,8 @@ import net.minecraft.core.registries.Registries;
 import dimasicserver.DimasicServerMod;
 
 public class DimasicServerModTabs {
-	public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, DimasicServerMod.MODID);
-	public static final RegistryObject<CreativeModeTab> SERVER_STUFF = REGISTRY.register("server_stuff",
+	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> REGISTRY = DeferredHolder.create(Registries.CREATIVE_MODE_TAB, DimasicServerMod.MODID);
+	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SERVER_STUFF = REGISTRY.register("server_stuff",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.dimasic_server.server_stuff")).icon(() -> new ItemStack(DimasicServerModBlocks.NAGARESPAWN.get())).displayItems((parameters, tabData) -> {
 				tabData.accept(DimasicServerModBlocks.SABUDKA.get().asItem());
 				tabData.accept(DimasicServerModBlocks.MOON.get().asItem());

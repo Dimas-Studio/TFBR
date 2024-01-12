@@ -1,6 +1,6 @@
 package dimasicserver.procedures;
 
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.Vec2;
@@ -34,8 +34,8 @@ public class SpawnlichProcedure {
 		double F = 0;
 		BlockState central = Blocks.AIR.defaultBlockState();
 		BlockState ring = Blocks.AIR.defaultBlockState();
-		central = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ConfigConfiguration.LICH_TROPHY_BLOCK.get())).defaultBlockState();
-		ring = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ConfigConfiguration.LICH_RING_BLOCK.get())).defaultBlockState();
+		central = BuiltInRegistries.BLOCK.get(new ResourceLocation(ConfigConfiguration.LICH_TROPHY_BLOCK.get())).defaultBlockState();
+		ring = BuiltInRegistries.BLOCK.get(new ResourceLocation(ConfigConfiguration.LICH_RING_BLOCK.get())).defaultBlockState();
 		F = 0;
 		if ((world.getBlockState(BlockPos.containing(x, y + 1, z))) == central) {
 			F = F + 1;
@@ -228,14 +228,7 @@ public class SpawnlichProcedure {
 				if (world instanceof ServerLevel _level)
 					_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(), ("setblock "
 							+ (new java.text.DecimalFormat("######## ").format(x) + "" + (new java.text.DecimalFormat("######## ").format(y) + "" + (new java.text.DecimalFormat("######## ").format(z) + "twilightforest:lich_boss_spawner")))));
-				if (entity instanceof ServerPlayer _player) {
-					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("dimasic_server:lichresp"));
-					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
-					if (!_ap.isDone()) {
-						for (String criteria : _ap.getRemainingCriteria())
-							_player.getAdvancements().award(_adv, criteria);
-					}
-				}
+
 			});
 		} else {
 			if (world instanceof Level _level && !_level.isClientSide())

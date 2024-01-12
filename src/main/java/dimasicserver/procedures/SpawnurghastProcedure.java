@@ -1,7 +1,7 @@
 package dimasicserver.procedures;
 
-import net.minecraftforge.registries.ForgeRegistries;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -35,8 +35,8 @@ public class SpawnurghastProcedure {
 		double F = 0;
 		BlockState central = Blocks.AIR.defaultBlockState();
 		BlockState ring = Blocks.AIR.defaultBlockState();
-		central = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ConfigConfiguration.URGHAST_TROPHY_BLOCK.get())).defaultBlockState();
-		ring = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ConfigConfiguration.URGHAST_RING_BLOCK.get())).defaultBlockState();
+		central = BuiltInRegistries.BLOCK.get(new ResourceLocation(ConfigConfiguration.URGHAST_TROPHY_BLOCK.get())).defaultBlockState();
+		ring = BuiltInRegistries.BLOCK.get(new ResourceLocation(ConfigConfiguration.URGHAST_RING_BLOCK.get())).defaultBlockState();
 		F = 0;
 		if ((world.getBlockState(BlockPos.containing(x, y + 1, z))) == central) {
 			F = F + 1;
@@ -213,16 +213,16 @@ public class SpawnurghastProcedure {
 				_level.sendParticles(ParticleTypes.SMOKE, x, y, z, 200, 0, 0, 0, 2);
 			if (world instanceof Level _level) {
 				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.ghast.hurt")), SoundSource.HOSTILE, 3, 3);
+					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(new ResourceLocation("entity.ghast.hurt")), SoundSource.HOSTILE, 3, 3);
 				} else {
-					_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.ghast.hurt")), SoundSource.HOSTILE, 3, 3, false);
+					_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(new ResourceLocation("entity.ghast.hurt")), SoundSource.HOSTILE, 3, 3, false);
 				}
 			}
 			if (world instanceof Level _level) {
 				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.ghast.scream")), SoundSource.HOSTILE, 3, 3);
+					_level.playSound(null, BlockPos.containing(x, y, z), BuiltInRegistries.SOUND_EVENT.get(new ResourceLocation("entity.ghast.scream")), SoundSource.HOSTILE, 3, 3);
 				} else {
-					_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.ghast.scream")), SoundSource.HOSTILE, 3, 3, false);
+					_level.playLocalSound(x, y, z, BuiltInRegistries.SOUND_EVENT.get(new ResourceLocation("entity.ghast.scream")), SoundSource.HOSTILE, 3, 3, false);
 				}
 			}
 			DimasicServerMod.queueServerWork(40, () -> {
@@ -244,14 +244,7 @@ public class SpawnurghastProcedure {
 					_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, (y + 3), z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
 							("setblock " + (new java.text.DecimalFormat("######## ").format(x) + ""
 									+ (new java.text.DecimalFormat("######## ").format(y) + "" + (new java.text.DecimalFormat("######## ").format(z) + "twilightforest:ur_ghast_boss_spawner")))));
-				if (entity instanceof ServerPlayer _player) {
-					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("dimasic_server:urghastresp"));
-					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
-					if (!_ap.isDone()) {
-						for (String criteria : _ap.getRemainingCriteria())
-							_player.getAdvancements().award(_adv, criteria);
-					}
-				}
+
 			});
 		} else {
 			if (world instanceof Level _level && !_level.isClientSide())
