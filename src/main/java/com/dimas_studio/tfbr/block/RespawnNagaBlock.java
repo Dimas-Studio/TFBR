@@ -6,29 +6,20 @@ import com.dimas_studio.tfbr.utils.Setblock;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
+import org.jetbrains.annotations.Nullable;
 import twilightforest.init.TFBlocks;
-
-import java.util.List;
-import java.util.Collections;
-import java.util.concurrent.TimeUnit;
 
 
 public class RespawnNagaBlock extends Block {
@@ -91,9 +82,9 @@ public class RespawnNagaBlock extends Block {
 										Setblock.setBlock(x+2, y, z-2, world, block);
 										summonLighting(x+2, y, z-2, world);
 
-										TFBR.queueServerWork(40, () -> {
-											Setblock.setBlock(x, y+1, z, world, Blocks.AIR);
-											Setblock.setBlock(x, y, z, world, TFBlocks.NAGA_BOSS_SPAWNER.get());
+										TFBR.queueServerWork(20, () -> {
+											Setblock.setBlock(x, y, z, world, Blocks.AIR);
+											Setblock.setBlock(x, y+2, z, world, TFBlocks.NAGA_BOSS_SPAWNER.get());
 										});
 									});
 								});

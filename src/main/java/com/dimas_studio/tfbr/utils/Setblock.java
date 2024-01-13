@@ -8,6 +8,9 @@ public class Setblock {
     public static void setBlock(int x, int y, int z, Level world, Block block) {
         world.setBlock(BlockPos.containing(x, y, z), block.defaultBlockState(), 3);
     }
+    public static void setBlock(BlockPos blockPos, Level world, Block block) {
+        world.setBlock(blockPos, block.defaultBlockState(), 3);
+    }
 
     public static void setBlockAround(int x, int y, int z, Level world, Block block) {
         setBlock(x+3, y, z, world, block);
