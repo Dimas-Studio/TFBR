@@ -6,7 +6,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.bus.api.IEventBus;
@@ -20,7 +19,7 @@ public class ModBlocks {
 
 
     public static final DeferredBlock<Block> RESPAWN_NAGA = registryBlock("respawn_naga",
-            () -> new RespawnBlock(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
+            () -> new RespawnNagaBlock(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
 
 
     private static <T extends Block>DeferredBlock<T> registryBlock(String name, Supplier<T> block) {
