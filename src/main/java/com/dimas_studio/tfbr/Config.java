@@ -1,63 +1,63 @@
 package com.dimas_studio.tfbr;
 
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-// An example config class. This is not required, but it's a good idea to have one to keep your config organized.
-// Demonstrates how to use Forge's config APIs
 @Mod.EventBusSubscriber(modid = TFBR.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Config
 {
-    private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
+    public static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
+    public static final ModConfigSpec SPEC;
+    public static final ModConfigSpec.ConfigValue<String> NAGA_TROPHY_BLOCK;
+    public static final ModConfigSpec.ConfigValue<String> NAGA_RING_BLOCK;
+    public static final ModConfigSpec.ConfigValue<String> NAGA_ENTITY;
+    public static final ModConfigSpec.ConfigValue<String> LICH_TROPHY_BLOCK;
+    public static final ModConfigSpec.ConfigValue<String> LICH_RING_BLOCK;
+    public static final ModConfigSpec.ConfigValue<String> LICH_ENTITY;
+    public static final ModConfigSpec.ConfigValue<String> HYDRA_TROPHY_BLOCK;
+    public static final ModConfigSpec.ConfigValue<String> HYDRA_RING_BLOCK;
+    public static final ModConfigSpec.ConfigValue<String> HYDRA_ENTITY;
+    public static final ModConfigSpec.ConfigValue<String> URGHAST_TROPHY_BLOCK;
+    public static final ModConfigSpec.ConfigValue<String> URGHAST_RING_BLOCK;
+    public static final ModConfigSpec.ConfigValue<String> URGHAST_ENTITY;
+    public static final ModConfigSpec.ConfigValue<String> SQ_TROPHY_BLOCK;
+    public static final ModConfigSpec.ConfigValue<String> SQ_RING_BLOCK;
+    public static final ModConfigSpec.ConfigValue<String> SQ_ENTITY;
+    static {
+        BUILDER.push("Naga resurrection");
+        NAGA_TROPHY_BLOCK = BUILDER.define("naga_trophy_block", "twilightforest:naga_trophy");
+        NAGA_RING_BLOCK = BUILDER.define("naga_ring_block", "twilightforest:ironwood_block");
+        NAGA_ENTITY = BUILDER.define("naga_entity", "twilightforest:naga");
+        BUILDER.pop();
+        BUILDER.push("Lich resurrection");
+        LICH_TROPHY_BLOCK = BUILDER.define("lich_trophy_block", "twilightforest:lich_trophy");
+        LICH_RING_BLOCK = BUILDER.define("lich_ring_block", "minecraft:gold_block");
+        LICH_ENTITY = BUILDER.define("lich_entity", "twilightforest:lich");
+        BUILDER.pop();
+        BUILDER.push("Hydra resurrection");
+        HYDRA_TROPHY_BLOCK = BUILDER.define("hydra_trophy_block", "twilightforest:hydra_trophy");
+        HYDRA_RING_BLOCK = BUILDER.define("hydra_ring_block", "minecraft:ancient_debris");
+        HYDRA_ENTITY = BUILDER.define("hydra_entity", "twilightforest:hydra");
+        BUILDER.pop();
+        BUILDER.push("Ur-Ghast resurrection");
+        URGHAST_TROPHY_BLOCK = BUILDER.define("urghast_trophy_block", "twilightforest:ur_ghast_trophy");
+        URGHAST_RING_BLOCK = BUILDER.define("urghast_ring_block", "minecraft:crying_obsidian");
+        URGHAST_ENTITY = BUILDER.define("urghast_entity", "twilightforest:ur_ghast");
+        BUILDER.pop();
+        BUILDER.push("Snow Queen resurrection");
+        SQ_TROPHY_BLOCK = BUILDER.define("sq_trophy_block", "twilightforest:snow_queen_trophy");
+        SQ_RING_BLOCK = BUILDER.define("sq_ring_block", "minecraft:lapis_block");
+        SQ_ENTITY = BUILDER.define("sq_entity", "twilightforest:snow_queen");
+        BUILDER.pop();
 
-    private static final ModConfigSpec.BooleanValue LOG_DIRT_BLOCK = BUILDER
-            .comment("Whether to log the dirt block on common setup")
-            .define("logDirtBlock", true);
-
-    private static final ModConfigSpec.IntValue MAGIC_NUMBER = BUILDER
-            .comment("A magic number")
-            .defineInRange("magicNumber", 42, 0, Integer.MAX_VALUE);
-
-    public static final ModConfigSpec.ConfigValue<String> MAGIC_NUMBER_INTRODUCTION = BUILDER
-            .comment("What you want the introduction message to be for the magic number")
-            .define("magicNumberIntroduction", "The magic number is... ");
-
-    // a list of strings that are treated as resource locations for items
-    private static final ModConfigSpec.ConfigValue<List<? extends String>> ITEM_STRINGS = BUILDER
-            .comment("A list of items to log on common setup.")
-            .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), Config::validateItemName);
-
-    static final ModConfigSpec SPEC = BUILDER.build();
-
-    public static boolean logDirtBlock;
-    public static int magicNumber;
-    public static String magicNumberIntroduction;
-    public static Set<Item> items;
-
-    private static boolean validateItemName(final Object obj)
-    {
-        return obj instanceof String itemName && BuiltInRegistries.ITEM.containsKey(new ResourceLocation(itemName));
+        SPEC = BUILDER.build();
     }
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event)
     {
-        logDirtBlock = LOG_DIRT_BLOCK.get();
-        magicNumber = MAGIC_NUMBER.get();
-        magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
 
-        // convert the list of strings into a set of items
-        items = ITEM_STRINGS.get().stream()
-                .map(itemName -> BuiltInRegistries.ITEM.get(new ResourceLocation(itemName)))
-                .collect(Collectors.toSet());
     }
 }
