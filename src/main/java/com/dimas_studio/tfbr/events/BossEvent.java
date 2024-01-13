@@ -2,17 +2,15 @@ package com.dimas_studio.tfbr.events;
 
 import com.dimas_studio.tfbr.TFBR;
 import com.dimas_studio.tfbr.block.ModBlocks;
-import com.dimas_studio.tfbr.utils.Setblock;
+import com.dimas_studio.tfbr.utils.WorldBlockManagment;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import twilightforest.block.TFChestBlock;
 import twilightforest.entity.boss.Naga;
-import twilightforest.init.TFBlocks;
 import twilightforest.util.EntityUtil;
 
 import static com.dimas_studio.tfbr.TFBR.MODID;
@@ -35,7 +33,7 @@ public class BossEvent {
 
     public static void summonBlock(Level world, BlockPos blockPos, Block block) {
         if (world.getBlockState(blockPos).getBlock() instanceof TFChestBlock) {
-            Setblock.setBlock(BlockPos.containing(blockPos.getX(), blockPos.getY()-1, blockPos.getZ()), world, block);
+            WorldBlockManagment.setBlock(BlockPos.containing(blockPos.getX(), blockPos.getY()-1, blockPos.getZ()), world, block);
             return;
         }
         TFBR.queueServerWork(40, () -> summonBlock(world, blockPos, block));
