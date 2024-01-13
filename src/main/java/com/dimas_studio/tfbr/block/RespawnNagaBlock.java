@@ -2,30 +2,28 @@
 package com.dimas_studio.tfbr.block;
 
 import com.dimas_studio.tfbr.TFBR;
-import com.dimas_studio.tfbr.utils.Setblock;
+import com.dimas_studio.tfbr.utils.WorldBlockManagment;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 import twilightforest.init.TFBlocks;
-
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -75,8 +73,55 @@ public class RespawnNagaBlock extends Block {
 
 		Setblock.setBlockAround(x, y, z, world, Blocks.BEDROCK);
 		replaceBlocksAround(world, blocksToReplase);
+		if (!checkRespawnConditions(x,y,z,world,TFBlocks.NAGA_TROPHY.get(), Blocks.IRON_BLOCK)) {
+			incorrectAltar(x,y,z,world,entity);
+			return InteractionResult.SUCCESS;
+		}
 
+		WorldBlockManagment.setBlock(x, y+1, z, world, Blocks.AIR);
+		WorldBlockManagment.setBlockAround(x, y, z, world, Blocks.BEDROCK);
+		replaceBlocksAround(x, y, z, world, Blocks.COAL_BLOCK);
 		return InteractionResult.SUCCESS;
+	}
+
+	private void incorrectAltar(int x, int y, int z, Level world, Entity player) {
+		if (player instanceof Player) {
+			player.sendSystemMessage(Component.translatable("message.naga.incorrect").append(" ").append(Blocks.IRON_BLOCK.getName()));
+		}
+		if (world instanceof ServerLevel) {
+			summonAllParticle(x,y,z,world,50);
+		}
+	}
+
+	private void summonAllParticle(int x, int y, int z, Level world, int times) {
+		summonParticle(x+3,y,z,world, ParticleTypes.CRIT);
+		summonParticle(x-3,y,z,world, ParticleTypes.CRIT);
+		summonParticle(x,y,z+3,world, ParticleTypes.CRIT);
+		summonParticle(x,y,z-3,world, ParticleTypes.CRIT);
+		summonParticle(x+2,y,z+2,world, ParticleTypes.CRIT);
+		summonParticle(x+2,y,z-2,world, ParticleTypes.CRIT);
+		summonParticle(x-2,y,z+2,world, ParticleTypes.CRIT);
+		summonParticle(x-2,y,z-2,world, ParticleTypes.CRIT);
+		summonParticle(x, y+1, z, world, ParticleTypes.HAPPY_VILLAGER);
+		if (times > 0) {
+			TFBR.queueServerWork(5, () -> summonAllParticle(x,y,z,world,times-1));
+		}
+	}
+
+	private void summonParticle(int X, int Y, int Z, Level world, ParticleOptions particleOptions){
+			RandomSource random = world.random;
+			double x = X + 0.5;
+			double y = Y + 0.5;
+			double z = Z + 0.5;
+			for (int i = 0; i < 1 + random.nextInt(5); i++) {
+				double particleX = x - 0.2 + random.nextDouble() * 0.4;
+				double particleY = y - 0.2 + random.nextDouble() * 0.4;
+				double particleZ = z - 0.2 + random.nextDouble() * 0.4;
+
+				Minecraft.getInstance().levelRenderer.addParticle(
+						particleOptions, false,
+						particleX, particleY, particleZ, 0, 0, 0);
+		}
 	}
 
 	private void summonLighting(int x, int y, int z, Level world) {
@@ -103,4 +148,36 @@ public class RespawnNagaBlock extends Block {
 			TFBR.queueServerWork(blocksToReplase[i+1].tick, () -> replaceBlocksAround(world, blocksToReplase, i+1));
 		}
 	}
+
+	private boolean checkRespawnConditions(int x, int y, int z,Level world, Block trophyBlock, Block materialBlock) {
+		if (!WorldBlockManagment.checkBlock(x, y+1, z, world, trophyBlock)) {
+			return false;
+		}
+		if (!WorldBlockManagment.checkBlock(x+3, y, z, world, materialBlock)) {
+			return false;
+		}
+		if (!WorldBlockManagment.checkBlock(x-3, y, z, world, materialBlock)) {
+			return false;
+		}
+		if (!WorldBlockManagment.checkBlock(x, y, z+3, world, materialBlock)) {
+			return false;
+		}
+		if (!WorldBlockManagment.checkBlock(x, y, z-3, world, materialBlock)) {
+			return false;
+		}
+		if (!WorldBlockManagment.checkBlock(x+2, y, z+2, world, materialBlock)) {
+			return false;
+		}
+		if (!WorldBlockManagment.checkBlock(x+2, y, z-2, world, materialBlock)) {
+			return false;
+		}
+		if (!WorldBlockManagment.checkBlock(x-2, y, z+2, world, materialBlock)) {
+			return false;
+		}
+		if (!WorldBlockManagment.checkBlock(x-2, y, z-2, world, materialBlock)) {
+			return false;
+		}
+		return true;
+	}
+
 }
