@@ -24,6 +24,8 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.core.BlockPos;
 import twilightforest.init.TFBlocks;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 
 public class RespawnNagaBlock extends Block {
@@ -31,13 +33,46 @@ public class RespawnNagaBlock extends Block {
 		super(p_49795_.noOcclusion());
 	}
 
+	private class BlockToReplase {
+		private int x;
+		private int y;
+		private int z;
+		private Block block;
+		private boolean summonLightning;
+		private int tick;
+
+		private BlockToReplase (int x, int y, int z, Block block, boolean summonLightning, int tick) {
+			this.x = x;
+			this.y = y;
+			this.z = z;
+			this.block = block;
+			this.summonLightning = summonLightning;
+			this.tick = tick;
+		}
+	}
 	@Override
 	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
+
 		super.use(blockstate, world, pos, entity, hand, hit);
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
 
+		BlockToReplase[] blocksToReplase = {
+				new BlockToReplase(x,y+1,z, Blocks.AIR, false, 1),
+				new BlockToReplase(x+3,y,z, Blocks.COAL_BLOCK, true, 20),
+				new BlockToReplase(x+2,y,z+2, Blocks.COAL_BLOCK, true, 20),
+				new BlockToReplase(x,y,z+3, Blocks.COAL_BLOCK, true, 20),
+				new BlockToReplase(x-2,y,z+2, Blocks.COAL_BLOCK, true, 20),
+				new BlockToReplase(x-3,y,z, Blocks.COAL_BLOCK, true, 20),
+				new BlockToReplase(x-2,y,z-2, Blocks.COAL_BLOCK, true, 20),
+				new BlockToReplase(x,y,z-3, Blocks.COAL_BLOCK, true, 20),
+				new BlockToReplase(x+2,y,z-2, Blocks.COAL_BLOCK, true, 20),
+				new BlockToReplase(x,y,z, TFBlocks.NAGA_BOSS_SPAWNER.get(), false, 40),
+		};
+
+		Setblock.setBlockAround(x, y, z, world, Blocks.BEDROCK);
+		replaceBlocksAround(world, blocksToReplase);
 		if (!checkRespawnConditions(x,y,z,world,TFBlocks.NAGA_TROPHY.get(), Blocks.IRON_BLOCK)) {
 			incorrectAltar(x,y,z,world,entity);
 			return InteractionResult.SUCCESS;
@@ -95,52 +130,23 @@ public class RespawnNagaBlock extends Block {
 		world.addFreshEntity(lightningBolt);
 	}
 
-	private void replaceBlocksAround(int x, int y, int z, Level world, Block block) {
-        //TODO: РЕКУРСИЯ!
-		TFBR.queueServerWork(20, () -> {
-			WorldBlockManagment.setBlock(x+3, y, z, world, block);
-			summonLighting(x+3, y, z, world);
-
-			TFBR.queueServerWork(20, () -> {
-				WorldBlockManagment.setBlock(x+2, y, z+2, world, block);
-				summonLighting(x+2, y, z+2, world);
-
-				TFBR.queueServerWork(20, () -> {
-					WorldBlockManagment.setBlock(x, y, z+3, world, block);
-					summonLighting(x, y, z+3, world);
-
-					TFBR.queueServerWork(20, () -> {
-						WorldBlockManagment.setBlock(x-2, y, z+2, world, block);
-						summonLighting(x-2, y, z+2, world);
-
-						TFBR.queueServerWork(20, () -> {
-							WorldBlockManagment.setBlock(x-3, y, z, world, block);
-							summonLighting(x-3, y, z, world);
-
-							TFBR.queueServerWork(20, () -> {
-								WorldBlockManagment.setBlock(x-2, y, z-2, world, block);
-								summonLighting(x-2, y, z-2, world);
-
-								TFBR.queueServerWork(20, () -> {
-									WorldBlockManagment.setBlock(x, y, z-3, world, block);
-									summonLighting(x, y, z-3, world);
-
-									TFBR.queueServerWork(20, () -> {
-										WorldBlockManagment.setBlock(x+2, y, z-2, world, block);
-										summonLighting(x+2, y, z-2, world);
-
-										TFBR.queueServerWork(20, () -> {
-											WorldBlockManagment.setBlock(x, y, z, world, Blocks.AIR);
-											WorldBlockManagment.setBlock(x, y+2, z, world, TFBlocks.NAGA_BOSS_SPAWNER.get());
-										});
-									});
-								});
-							});
-						});
-					});
-				});
-			});
-		});
+	private void replaceBlocksAround(Level world, BlockToReplase[] blocksToReplase) {
+		replaceBlocksAround(world, blocksToReplase, -1);
+	}
+	private void replaceBlocksAround(Level world, BlockToReplase[] blocksToReplase, int i) {
+		if (i >= 0) {
+			int x = blocksToReplase[i].x;
+			int y = blocksToReplase[i].y;
+			int z = blocksToReplase[i].z;
+			Block block = blocksToReplase[i].block;
+			Setblock.setBlock(x, y, z, world, block);
+			if (blocksToReplase[i].summonLightning) {
+				summonLighting(x, y, z, world);
+			}
+		}
+		if (i+1 < blocksToReplase.length) {
+			TFBR.queueServerWork(blocksToReplase[i+1].tick, () -> replaceBlocksAround(world, blocksToReplase, i+1));
+		}
 	}
 
 	private boolean checkRespawnConditions(int x, int y, int z,Level world, Block trophyBlock, Block materialBlock) {
