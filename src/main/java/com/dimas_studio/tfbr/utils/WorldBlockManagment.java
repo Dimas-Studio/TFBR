@@ -27,7 +27,17 @@ public class WorldBlockManagment {
         return world.getBlockState(blockPos).getBlock();
     }
 
-    public static void setBlockAround(int x, int y, int z, Level world, Block block, ReplaseBlock.ReplaseEffects replaseEffects) {
+    public static void setBlockAroundFiled(int x, int y, int z, int radius, Level world, Block block) {
+        for (int x_block = x-radius; x_block<=x+radius; x_block++){
+            for(int z_block = z-radius; z_block<=z+radius; z_block++){
+                if (Math.abs(x_block-x)+Math.abs(z_block-z) <= radius) {
+                    setBlock(x_block, y, z_block, world, block);
+                }
+            }
+        }
+    }
+
+        public static void setBlockAround(int x, int y, int z, Level world, Block block, ReplaseBlock.ReplaseEffects replaseEffects) {
         setBlock(x+3, y, z, world, block);
         setBlock(x-3, y, z, world, block);
         setBlock(x, y, z+3, world, block);

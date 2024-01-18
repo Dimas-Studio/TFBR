@@ -11,6 +11,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import twilightforest.block.TFChestBlock;
 import twilightforest.entity.boss.*;
+import twilightforest.init.TFBlocks;
 import twilightforest.util.EntityUtil;
 
 import static com.dimas_studio.tfbr.TFBR.MODID;
@@ -34,7 +35,11 @@ public class BossEvent {
                 summonBlock(hydra.level(), EntityUtil.bossChestLocation(hydra), ModBlocks.RESPAWN_HYDRA.get(), -1);
             }
             if (event.getEntity() instanceof UrGhast urGhast) {
-                summonBlock(urGhast.level(), EntityUtil.bossChestLocation(urGhast), ModBlocks.RESPAWN_UR_GHAST.get(), -1);
+                summonBlock(urGhast.level(), EntityUtil.bossChestLocation(urGhast), ModBlocks.RESPAWN_UR_GHAST.get(), -2);
+                int x = EntityUtil.bossChestLocation(urGhast).getX();
+                int y = EntityUtil.bossChestLocation(urGhast).getY();
+                int z = EntityUtil.bossChestLocation(urGhast).getZ();
+                WorldBlockManagment.setBlockAroundFiled(x,y-3,z,4,urGhast.level(), TFBlocks.ENCASED_TOWERWOOD.get());
             }
             if (event.getEntity() instanceof SnowQueen snowQueen) {
                 summonBlock(snowQueen.level(), EntityUtil.bossChestLocation(snowQueen), ModBlocks.RESPAWN_SNOW_QUEEN.get(), -2);

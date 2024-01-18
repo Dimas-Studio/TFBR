@@ -58,7 +58,7 @@ public class RespawnBlockUrGhast extends RespawnBlock{
                 replaseBlock.new BlockToReplase(x-2,y,z-2, TFBlocks.ANTIBUILT_BLOCK.get(), replaceEffectsRound, 0),
                 replaseBlock.new BlockToReplase(x+2,y,z-2, TFBlocks.ANTIBUILT_BLOCK.get(), replaceEffectsRound, 0),
                 replaseBlock.new BlockToReplase(x, y, z, Blocks.AIR, replaceEffectsCentarl, 40),
-                replaseBlock.new BlockToReplase(x,y+2,z, TFBlocks.UR_GHAST_BOSS_SPAWNER.get(), replaceEffectsSpawner, 0),
+                replaseBlock.new BlockToReplase(x,y+3,z, TFBlocks.UR_GHAST_BOSS_SPAWNER.get(), replaceEffectsSpawner, 0),
         };
         Block trophyBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.URGHAST_TROPHY_BLOCK.get()));
         Block materialBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.URGHAST_RING_BLOCK.get()));
@@ -78,6 +78,7 @@ public class RespawnBlockUrGhast extends RespawnBlock{
             return InteractionResult.SUCCESS;
         }
         WorldBlockManagment.setBlock(x, y, z, world, Blocks.BEDROCK);
+
         WorldBlockManagment.setBlockAround(x, y, z, world, Blocks.BEDROCK, null);
         WorldBlockManagment.replaceBlocks(world, blocksToReplace);
         return InteractionResult.SUCCESS;
