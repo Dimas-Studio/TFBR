@@ -21,7 +21,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> RESPAWN_NAGA = registryBlock("respawn_naga",
             () -> new RespawnBlockNaga(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
     public static final DeferredBlock<Block> RESPAWN_LICH = registryBlock("respawn_lich",
-            () -> new RespawnBlockNaga(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
+            () -> new RespawnBlockLich(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
     public static final DeferredBlock<Block> RESPAWN_HYDRA = registryBlock("respawn_hydra",
             () -> new RespawnBlockNaga(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
     public static final DeferredBlock<Block> RESPAWN_UR_GHAST = registryBlock("respawn_ur_ghast",

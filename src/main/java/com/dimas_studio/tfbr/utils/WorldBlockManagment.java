@@ -1,8 +1,12 @@
 package com.dimas_studio.tfbr.utils;
 
+import com.dimas_studio.tfbr.TFBR;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.phys.Vec3;
 
 public class WorldBlockManagment {
     public static void setBlock(int x, int y, int z, Level world, Block block) {
@@ -23,7 +27,7 @@ public class WorldBlockManagment {
         return world.getBlockState(blockPos).getBlock();
     }
 
-    public static void setBlockAround(int x, int y, int z, Level world, Block block) {
+    public static void setBlockAround(int x, int y, int z, Level world, Block block, ReplaseBlock.ReplaseEffects replaseEffects) {
         setBlock(x+3, y, z, world, block);
         setBlock(x-3, y, z, world, block);
         setBlock(x, y, z+3, world, block);
@@ -32,7 +36,33 @@ public class WorldBlockManagment {
         setBlock(x-2, y, z+2, world, block);
         setBlock(x+2, y, z-2, world, block);
         setBlock(x-2, y, z-2, world, block);
+
     }
 
+    public static void replaceBlocks(Level world, ReplaseBlock.BlockToReplase[] blocksToReplase) {
+        replaceBlocks(world, blocksToReplase, -1);
+    }
+
+    private static void replaceBlocks(Level world, ReplaseBlock.BlockToReplase[] blocksToReplase, int i) {
+        if (i >= 0) {
+            int x = blocksToReplase[i].x;
+            int y = blocksToReplase[i].y;
+            int z = blocksToReplase[i].z;
+            Block block = blocksToReplase[i].block;
+            WorldBlockManagment.setBlock(x, y, z, world, block);
+            if (blocksToReplase[i].summonLightning) {
+                summonLighting(x, y, z, world);
+            }
+        }
+        if (i+1 < blocksToReplase.length) {
+            TFBR.queueServerWork(blocksToReplase[i+1].tick, () -> replaceBlocks(world, blocksToReplase, i+1));
+        }
+    }
+
+    private static void summonLighting(int x, int y, int z, Level world) {
+        LightningBolt lightningBolt = EntityType.LIGHTNING_BOLT.create(world);
+        lightningBolt.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z)));
+        world.addFreshEntity(lightningBolt);
+    }
 
 }

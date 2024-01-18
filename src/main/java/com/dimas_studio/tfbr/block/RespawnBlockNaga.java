@@ -62,8 +62,8 @@ public class RespawnBlockNaga extends RespawnBlock{
             );
             return InteractionResult.SUCCESS;
         }
-        WorldBlockManagment.setBlockAround(x, y, z, world, Blocks.BEDROCK);
-        replaceBlocksAround(world, blocksToReplase);
+        WorldBlockManagment.setBlockAround(x, y, z, world, Blocks.BEDROCK, null);
+        WorldBlockManagment.replaceBlocks(world, blocksToReplase);
         return InteractionResult.SUCCESS;
     }
 

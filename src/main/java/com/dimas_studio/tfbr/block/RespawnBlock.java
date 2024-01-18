@@ -71,31 +71,6 @@ public class RespawnBlock extends Block {
 		}
 	}
 
-	private void summonLighting(int x, int y, int z, Level world) {
-		LightningBolt lightningBolt = EntityType.LIGHTNING_BOLT.create(world);
-		lightningBolt.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z)));
-		world.addFreshEntity(lightningBolt);
-	}
-
-	protected void replaceBlocksAround(Level world, ReplaseBlock.BlockToReplase[] blocksToReplase) {
-		replaceBlocksAround(world, blocksToReplase, -1);
-	}
-	private void replaceBlocksAround(Level world, ReplaseBlock.BlockToReplase[] blocksToReplase, int i) {
-		if (i >= 0) {
-			int x = blocksToReplase[i].x;
-			int y = blocksToReplase[i].y;
-			int z = blocksToReplase[i].z;
-			Block block = blocksToReplase[i].block;
-			WorldBlockManagment.setBlock(x, y, z, world, block);
-			if (blocksToReplase[i].summonLightning) {
-				summonLighting(x, y, z, world);
-			}
-		}
-		if (i+1 < blocksToReplase.length) {
-			TFBR.queueServerWork(blocksToReplase[i+1].tick, () -> replaceBlocksAround(world, blocksToReplase, i+1));
-		}
-	}
-
 	protected boolean checkRespawnConditions(int x, int y, int z,Level world, Block trophyBlock, Block materialBlock) {
 		if (!WorldBlockManagment.checkBlock(x, y+1, z, world, trophyBlock)) {
 			return false;
