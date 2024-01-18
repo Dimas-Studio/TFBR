@@ -40,23 +40,28 @@ public class WorldBlockManagment {
     }
 
     public static void replaceBlocks(Level world, ReplaseBlock.BlockToReplase[] blocksToReplase) {
-        replaceBlocks(world, blocksToReplase, -1);
+        replaceBlocks(world, blocksToReplase, 0);
     }
 
     private static void replaceBlocks(Level world, ReplaseBlock.BlockToReplase[] blocksToReplase, int i) {
         if (i >= 0) {
-            int x = blocksToReplase[i].x;
-            int y = blocksToReplase[i].y;
-            int z = blocksToReplase[i].z;
-            Block block = blocksToReplase[i].block;
-            WorldBlockManagment.setBlock(x, y, z, world, block);
-            if (blocksToReplase[i].summonLightning) {
-                summonLighting(x, y, z, world);
-            }
+             do {
+                int x = blocksToReplase[i].x;
+                int y = blocksToReplase[i].y;
+                int z = blocksToReplase[i].z;
+                Block block = blocksToReplase[i].block;
+                WorldBlockManagment.setBlock(x, y, z, world, block);
+                if (blocksToReplase[i].summonLightning) {
+                    summonLighting(x, y, z, world);
+                }
+                i++;
+                if (i == blocksToReplase.length){
+                    return;
+                }
+            } while (blocksToReplase[i].tick == 0);
         }
-        if (i+1 < blocksToReplase.length) {
-            TFBR.queueServerWork(blocksToReplase[i+1].tick, () -> replaceBlocks(world, blocksToReplase, i+1));
-        }
+        int finalI = i;
+        TFBR.queueServerWork(blocksToReplase[i].tick, () -> replaceBlocks(world, blocksToReplase, finalI));
     }
 
     private static void summonLighting(int x, int y, int z, Level world) {

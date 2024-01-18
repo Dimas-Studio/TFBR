@@ -42,15 +42,15 @@ public class RespawnBlockLich extends RespawnBlock{
         Block materialBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.LICH_RING_BLOCK.get()));
         ReplaseBlock.ReplaseEffects replaseEffects = new ReplaseBlock.ReplaseEffects(false, null);
         ReplaseBlock.BlockToReplase[] blocksToReplase = {
-                new ReplaseBlock.BlockToReplase(x,y+1,z, Blocks.AIR, replaseEffects, 1),
-                new ReplaseBlock.BlockToReplase(x+3,y,z, Blocks.GLASS, replaseEffects, 1),
-                new ReplaseBlock.BlockToReplase(x+2,y,z+2, Blocks.GLASS, replaseEffects, 1),
-                new ReplaseBlock.BlockToReplase(x,y,z+3, Blocks.GLASS, replaseEffects, 1),
-                new ReplaseBlock.BlockToReplase(x-2,y,z+2, Blocks.GLASS, replaseEffects, 1),
-                new ReplaseBlock.BlockToReplase(x-3,y,z, Blocks.GLASS, replaseEffects, 1),
-                new ReplaseBlock.BlockToReplase(x-2,y,z-2, Blocks.GLASS, replaseEffects, 1),
-                new ReplaseBlock.BlockToReplase(x,y,z-3, Blocks.GLASS, replaseEffects, 1),
-                new ReplaseBlock.BlockToReplase(x+2,y,z-2, Blocks.GLASS, replaseEffects, 1),
+                new ReplaseBlock.BlockToReplase(x,y+1,z, Blocks.AIR, replaseEffects, 0),
+                new ReplaseBlock.BlockToReplase(x+3,y,z, Blocks.GLASS, replaseEffects, 0),
+                new ReplaseBlock.BlockToReplase(x+2,y,z+2, Blocks.GLASS, replaseEffects, 0),
+                new ReplaseBlock.BlockToReplase(x,y,z+3, Blocks.GLASS, replaseEffects, 0),
+                new ReplaseBlock.BlockToReplase(x-2,y,z+2, Blocks.GLASS, replaseEffects, 0),
+                new ReplaseBlock.BlockToReplase(x-3,y,z, Blocks.GLASS, replaseEffects, 0),
+                new ReplaseBlock.BlockToReplase(x-2,y,z-2, Blocks.GLASS, replaseEffects, 0),
+                new ReplaseBlock.BlockToReplase(x,y,z-3, Blocks.GLASS, replaseEffects, 0),
+                new ReplaseBlock.BlockToReplase(x+2,y,z-2, Blocks.GLASS, replaseEffects, 0),
                 new ReplaseBlock.BlockToReplase(x, y, z, Blocks.GLASS, replaseEffects, 40),
                 new ReplaseBlock.BlockToReplase(x,y+2,z, TFBlocks.LICH_BOSS_SPAWNER.get(), replaseEffects, 1),
         };

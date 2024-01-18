@@ -40,15 +40,15 @@ public class RespawnBlockHydra extends RespawnBlock{
         Block materialBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.HYDRA_RING_BLOCK.get()));
         ReplaseBlock.ReplaseEffects replaseEffects = new ReplaseBlock.ReplaseEffects(false, null);
         ReplaseBlock.BlockToReplase[] blocksToReplase = {
-                new ReplaseBlock.BlockToReplase(x,y+1,z, Blocks.AIR, replaseEffects, 1),
-                new ReplaseBlock.BlockToReplase(x+3,y,z, Blocks.AIR, replaseEffects, 1),
-                new ReplaseBlock.BlockToReplase(x+2,y,z+2, Blocks.AIR, replaseEffects, 1),
-                new ReplaseBlock.BlockToReplase(x,y,z+3, Blocks.AIR, replaseEffects, 1),
-                new ReplaseBlock.BlockToReplase(x-2,y,z+2, Blocks.AIR, replaseEffects, 1),
-                new ReplaseBlock.BlockToReplase(x-3,y,z, Blocks.AIR, replaseEffects, 1),
-                new ReplaseBlock.BlockToReplase(x-2,y,z-2, Blocks.AIR, replaseEffects, 1),
-                new ReplaseBlock.BlockToReplase(x,y,z-3, Blocks.AIR, replaseEffects, 1),
-                new ReplaseBlock.BlockToReplase(x+2,y,z-2, Blocks.AIR, replaseEffects, 1),
+                new ReplaseBlock.BlockToReplase(x,y+1,z, Blocks.AIR, replaseEffects, 0),
+                new ReplaseBlock.BlockToReplase(x+3,y,z, Blocks.AIR, replaseEffects, 0),
+                new ReplaseBlock.BlockToReplase(x+2,y,z+2, Blocks.AIR, replaseEffects, 0),
+                new ReplaseBlock.BlockToReplase(x,y,z+3, Blocks.AIR, replaseEffects, 0),
+                new ReplaseBlock.BlockToReplase(x-2,y,z+2, Blocks.AIR, replaseEffects, 0),
+                new ReplaseBlock.BlockToReplase(x-3,y,z, Blocks.AIR, replaseEffects, 0),
+                new ReplaseBlock.BlockToReplase(x-2,y,z-2, Blocks.AIR, replaseEffects, 0),
+                new ReplaseBlock.BlockToReplase(x,y,z-3, Blocks.AIR, replaseEffects, 0),
+                new ReplaseBlock.BlockToReplase(x+2,y,z-2, Blocks.AIR, replaseEffects, 0),
                 new ReplaseBlock.BlockToReplase(x, y, z, Blocks.AIR, replaseEffects, 40),
                 new ReplaseBlock.BlockToReplase(x,y+2,z, TFBlocks.HYDRA_BOSS_SPAWNER.get(), replaseEffects, 1),
         };
@@ -63,6 +63,7 @@ public class RespawnBlockHydra extends RespawnBlock{
             );
             return InteractionResult.SUCCESS;
         }
+        WorldBlockManagment.setBlock(x,y,z,world,Blocks.BEDROCK);
         WorldBlockManagment.replaceBlocks(world, blocksToReplase);
         if (world instanceof ServerLevel level)
             level.sendParticles(ParticleTypes.FLAME, x, y+1, z, 500, 1, 1, 1, 2);
