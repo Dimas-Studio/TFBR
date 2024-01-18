@@ -3,6 +3,7 @@ package com.dimas_studio.tfbr.block;
 
 import com.dimas_studio.tfbr.Config;
 import com.dimas_studio.tfbr.TFBR;
+import com.dimas_studio.tfbr.utils.ReplaseBlock;
 import com.dimas_studio.tfbr.utils.WorldBlockManagment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleOptions;
@@ -27,94 +28,40 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import twilightforest.init.TFBlocks;
-import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 
-public class RespawnNagaBlock extends Block {
-	public RespawnNagaBlock(BlockBehaviour.Properties p_49795_) {
+public class RespawnBlock extends Block {
+	public RespawnBlock(BlockBehaviour.Properties p_49795_) {
 		super(p_49795_.noOcclusion());
 	}
 
-	private class BlockToReplase {
-		private int x;
-		private int y;
-		private int z;
-		private Block block;
-		private boolean summonLightning;
-		private int tick;
 
-		private BlockToReplase (int x, int y, int z, Block block, boolean summonLightning, int tick) {
-			this.x = x;
-			this.y = y;
-			this.z = z;
-			this.block = block;
-			this.summonLightning = summonLightning;
-			this.tick = tick;
-		}
-	}
-	@Override
-	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
 
-		if(world.isClientSide()) {
-			return InteractionResult.SUCCESS;
-		}
-
-		super.use(blockstate, world, pos, entity, hand, hit);
-		int x = pos.getX();
-		int y = pos.getY();
-		int z = pos.getZ();
-		BlockToReplase[] blocksToReplase = {
-				new BlockToReplase(x,y+1,z, Blocks.AIR, false, 1),
-				new BlockToReplase(x+3,y,z, Blocks.COAL_BLOCK, true, 20),
-				new BlockToReplase(x+2,y,z+2, Blocks.COAL_BLOCK, true, 20),
-				new BlockToReplase(x,y,z+3, Blocks.COAL_BLOCK, true, 20),
-				new BlockToReplase(x-2,y,z+2, Blocks.COAL_BLOCK, true, 20),
-				new BlockToReplase(x-3,y,z, Blocks.COAL_BLOCK, true, 20),
-				new BlockToReplase(x-2,y,z-2, Blocks.COAL_BLOCK, true, 20),
-				new BlockToReplase(x,y,z-3, Blocks.COAL_BLOCK, true, 20),
-				new BlockToReplase(x+2,y,z-2, Blocks.COAL_BLOCK, true, 20),
-				new BlockToReplase(x, y, z, Blocks.AIR, false, 40),
-				new BlockToReplase(x,y+2,z, TFBlocks.NAGA_BOSS_SPAWNER.get(), false, 1),
-		};
-		Block trophyBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.NAGA_TROPHY_BLOCK.get()));
-		Block materialBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.NAGA_RING_BLOCK.get()));
-
-		if (!checkRespawnConditions(x,y,z,world, trophyBlock, materialBlock)) {
-			incorrectAltar(x,y,z,world,entity, trophyBlock, materialBlock);
-			return InteractionResult.SUCCESS;
-		}
-
-		WorldBlockManagment.setBlockAround(x, y, z, world, Blocks.BEDROCK);
-		replaceBlocksAround(world, blocksToReplase);
-		return InteractionResult.SUCCESS;
-	}
-
-	private void incorrectAltar(int x, int y, int z, Level world, Entity player, Block thophy, Block material) {
+	protected void incorrectAltar(int x, int y, int z, Level world, Entity player, Block thophy, Block material, String tanslationkey, ParticleOptions centralParticle, ParticleOptions roundParticle) {
 		if (player instanceof Player) {
-			String message = String.format(Component.translatable("message.naga.incorrect").getString(),
+			String message = String.format(Component.translatable(tanslationkey).getString(),
 					material.getName().getString(),
 					thophy.getName().getString()
 			);
 			player.sendSystemMessage(Component.literal(message));
 		}
 		if (world instanceof ServerLevel) {
-			summonAllParticle(x,y,z,world,50);
+			summonAllParticle(x,y,z,world,50, centralParticle, roundParticle);
 		}
 	}
 
-	private void summonAllParticle(int x, int y, int z, Level world, int times) {
-		summonParticle(x+3,y,z,world, ParticleTypes.CRIT);
-		summonParticle(x-3,y,z,world, ParticleTypes.CRIT);
-		summonParticle(x,y,z+3,world, ParticleTypes.CRIT);
-		summonParticle(x,y,z-3,world, ParticleTypes.CRIT);
-		summonParticle(x+2,y,z+2,world, ParticleTypes.CRIT);
-		summonParticle(x+2,y,z-2,world, ParticleTypes.CRIT);
-		summonParticle(x-2,y,z+2,world, ParticleTypes.CRIT);
-		summonParticle(x-2,y,z-2,world, ParticleTypes.CRIT);
-		summonParticle(x, y+1, z, world, ParticleTypes.HAPPY_VILLAGER);
+	private void summonAllParticle(int x, int y, int z, Level world, int times, ParticleOptions centralParticle, ParticleOptions roundParticle) {
+		summonParticle(x+3,y,z,world, roundParticle);
+		summonParticle(x-3,y,z,world, roundParticle);
+		summonParticle(x,y,z+3,world, roundParticle);
+		summonParticle(x,y,z-3,world, roundParticle);
+		summonParticle(x+2,y,z+2,world, roundParticle);
+		summonParticle(x+2,y,z-2,world, roundParticle);
+		summonParticle(x-2,y,z+2,world, roundParticle);
+		summonParticle(x-2,y,z-2,world, roundParticle);
+		summonParticle(x, y+1, z, world, centralParticle);
 		if (times > 0) {
-			TFBR.queueServerWork(5, () -> summonAllParticle(x,y,z,world,times-1));
+			TFBR.queueServerWork(5, () -> summonAllParticle(x,y,z,world,times-1, centralParticle, roundParticle));
 		}
 	}
 
@@ -140,10 +87,10 @@ public class RespawnNagaBlock extends Block {
 		world.addFreshEntity(lightningBolt);
 	}
 
-	private void replaceBlocksAround(Level world, BlockToReplase[] blocksToReplase) {
+	protected void replaceBlocksAround(Level world, ReplaseBlock.BlockToReplase[] blocksToReplase) {
 		replaceBlocksAround(world, blocksToReplase, -1);
 	}
-	private void replaceBlocksAround(Level world, BlockToReplase[] blocksToReplase, int i) {
+	private void replaceBlocksAround(Level world, ReplaseBlock.BlockToReplase[] blocksToReplase, int i) {
 		if (i >= 0) {
 			int x = blocksToReplase[i].x;
 			int y = blocksToReplase[i].y;
@@ -159,7 +106,7 @@ public class RespawnNagaBlock extends Block {
 		}
 	}
 
-	private boolean checkRespawnConditions(int x, int y, int z,Level world, Block trophyBlock, Block materialBlock) {
+	protected boolean checkRespawnConditions(int x, int y, int z,Level world, Block trophyBlock, Block materialBlock) {
 		if (!WorldBlockManagment.checkBlock(x, y+1, z, world, trophyBlock)) {
 			return false;
 		}

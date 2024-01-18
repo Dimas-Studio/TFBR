@@ -19,7 +19,7 @@ public class ModBlocks {
 
 
     public static final DeferredBlock<Block> RESPAWN_NAGA = registryBlock("respawn_naga",
-            () -> new RespawnNagaBlock(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
+            () -> new RespawnBlockNaga(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
 
 
     private static <T extends Block>DeferredBlock<T> registryBlock(String name, Supplier<T> block) {
