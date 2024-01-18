@@ -3,9 +3,7 @@ package com.dimas_studio.tfbr.block;
 import com.dimas_studio.tfbr.Config;
 import com.dimas_studio.tfbr.utils.ReplaseBlock;
 import com.dimas_studio.tfbr.utils.WorldBlockManagment;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -65,6 +63,7 @@ public class RespawnBlockLich extends RespawnBlock{
             );
             return InteractionResult.SUCCESS;
         }
+        WorldBlockManagment.setBlock(x,y,z,world,Blocks.BARRIER);
         WorldBlockManagment.replaceBlocks(world, blocksToReplase);
         if (world instanceof ServerLevel level)
             level.sendParticles(ParticleTypes.PORTAL, x, y+1, z, 500, 1, 1, 1, 2);
