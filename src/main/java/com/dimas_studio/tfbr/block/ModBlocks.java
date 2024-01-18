@@ -20,6 +20,14 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> RESPAWN_NAGA = registryBlock("respawn_naga",
             () -> new RespawnBlockNaga(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
+    public static final DeferredBlock<Block> RESPAWN_LICH = registryBlock("respawn_lich",
+            () -> new RespawnBlockNaga(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
+    public static final DeferredBlock<Block> RESPAWN_HYDRA = registryBlock("respawn_hydra",
+            () -> new RespawnBlockNaga(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
+    public static final DeferredBlock<Block> RESPAWN_UR_GHAST = registryBlock("respawn_ur_ghast",
+            () -> new RespawnBlockNaga(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
+    public static final DeferredBlock<Block> RESPAWN_SNOW_QUEEN = registryBlock("respawn_snow_queen",
+            () -> new RespawnBlockNaga(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
 
 
     private static <T extends Block>DeferredBlock<T> registryBlock(String name, Supplier<T> block) {

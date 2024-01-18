@@ -1,5 +1,9 @@
 {
-  "block.tfbr.respawn_naga" : "Naga Respawn Stone",
+  "block.tfbr.respawn_naga" : "Naga Respawn Pedestal",
+  "block.tfbr.respawn_lich" : "Lich Respawn Pedestal",
+  "block.tfbr.respawn_hydra" : "Hydra Respawn Pedestal",
+  "block.tfbr.respawn_ur_ghast" : "Ur-Ghast Pedestal",
+  "block.tfbr.respawn_snow_queen" : "Snow Queen Respawn Pedestal",
 
   "creativetab.tfbr_tab": "Twilight Forest: Bosses Resurrection",
 
