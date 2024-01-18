@@ -10,6 +10,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import twilightforest.block.TFChestBlock;
+import twilightforest.entity.boss.Hydra;
 import twilightforest.entity.boss.Lich;
 import twilightforest.entity.boss.Naga;
 import twilightforest.util.EntityUtil;
@@ -30,6 +31,9 @@ public class BossEvent {
             }
             if (event.getEntity() instanceof Lich lich) {
                 summonBlock(lich.level(), EntityUtil.bossChestLocation(lich), ModBlocks.RESPAWN_LICH.get());
+            }
+            if (event.getEntity() instanceof Hydra hydra) {
+                summonBlock(hydra.level(), EntityUtil.bossChestLocation(hydra), ModBlocks.RESPAWN_HYDRA.get());
             }
         }
     }
