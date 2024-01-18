@@ -1,12 +1,14 @@
 
 package com.dimas_studio.tfbr.block;
 
+import com.dimas_studio.tfbr.Config;
 import com.dimas_studio.tfbr.TFBR;
 import com.dimas_studio.tfbr.utils.WorldBlockManagment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
@@ -23,6 +25,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
 import twilightforest.init.TFBlocks;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -53,11 +56,14 @@ public class RespawnNagaBlock extends Block {
 	@Override
 	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
 
+		if(world.isClientSide()) {
+			return InteractionResult.SUCCESS;
+		}
+
 		super.use(blockstate, world, pos, entity, hand, hit);
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
-
 		BlockToReplase[] blocksToReplase = {
 				new BlockToReplase(x,y+1,z, Blocks.AIR, false, 1),
 				new BlockToReplase(x+3,y,z, Blocks.COAL_BLOCK, true, 20),
@@ -68,25 +74,29 @@ public class RespawnNagaBlock extends Block {
 				new BlockToReplase(x-2,y,z-2, Blocks.COAL_BLOCK, true, 20),
 				new BlockToReplase(x,y,z-3, Blocks.COAL_BLOCK, true, 20),
 				new BlockToReplase(x+2,y,z-2, Blocks.COAL_BLOCK, true, 20),
-				new BlockToReplase(x,y,z, TFBlocks.NAGA_BOSS_SPAWNER.get(), false, 40),
+				new BlockToReplase(x, y, z, Blocks.AIR, false, 40),
+				new BlockToReplase(x,y+2,z, TFBlocks.NAGA_BOSS_SPAWNER.get(), false, 1),
 		};
+		Block trophyBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.NAGA_TROPHY_BLOCK.get()));
+		Block materialBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.NAGA_RING_BLOCK.get()));
 
-		Setblock.setBlockAround(x, y, z, world, Blocks.BEDROCK);
-		replaceBlocksAround(world, blocksToReplase);
-		if (!checkRespawnConditions(x,y,z,world,TFBlocks.NAGA_TROPHY.get(), Blocks.IRON_BLOCK)) {
-			incorrectAltar(x,y,z,world,entity);
+		if (!checkRespawnConditions(x,y,z,world, trophyBlock, materialBlock)) {
+			incorrectAltar(x,y,z,world,entity, trophyBlock, materialBlock);
 			return InteractionResult.SUCCESS;
 		}
 
-		WorldBlockManagment.setBlock(x, y+1, z, world, Blocks.AIR);
 		WorldBlockManagment.setBlockAround(x, y, z, world, Blocks.BEDROCK);
-		replaceBlocksAround(x, y, z, world, Blocks.COAL_BLOCK);
+		replaceBlocksAround(world, blocksToReplase);
 		return InteractionResult.SUCCESS;
 	}
 
-	private void incorrectAltar(int x, int y, int z, Level world, Entity player) {
+	private void incorrectAltar(int x, int y, int z, Level world, Entity player, Block thophy, Block material) {
 		if (player instanceof Player) {
-			player.sendSystemMessage(Component.translatable("message.naga.incorrect").append(" ").append(Blocks.IRON_BLOCK.getName()));
+			String message = String.format(Component.translatable("message.naga.incorrect").getString(),
+					material.getName().getString(),
+					thophy.getName().getString()
+			);
+			player.sendSystemMessage(Component.literal(message));
 		}
 		if (world instanceof ServerLevel) {
 			summonAllParticle(x,y,z,world,50);
@@ -139,7 +149,7 @@ public class RespawnNagaBlock extends Block {
 			int y = blocksToReplase[i].y;
 			int z = blocksToReplase[i].z;
 			Block block = blocksToReplase[i].block;
-			Setblock.setBlock(x, y, z, world, block);
+			WorldBlockManagment.setBlock(x, y, z, world, block);
 			if (blocksToReplase[i].summonLightning) {
 				summonLighting(x, y, z, world);
 			}
