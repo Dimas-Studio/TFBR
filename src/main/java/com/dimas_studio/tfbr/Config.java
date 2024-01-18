@@ -38,12 +38,12 @@ public class Config
 
         BUILDER.push("Ur-Ghast resurrection");
         URGHAST_TROPHY_BLOCK = BUILDER.define("urghast_trophy_block", "twilightforest:ur_ghast_trophy");
-        URGHAST_RING_BLOCK = BUILDER.define("urghast_ring_block", "minecraft:crying_obsidian");
+        URGHAST_RING_BLOCK = BUILDER.define("urghast_ring_block", "twilightforest:knightmetal_block");
         BUILDER.pop();
 
         BUILDER.push("Snow Queen resurrection");
         SQ_TROPHY_BLOCK = BUILDER.define("sq_trophy_block", "twilightforest:snow_queen_trophy");
-        SQ_RING_BLOCK = BUILDER.define("sq_ring_block", "minecraft:lapis_block");
+        SQ_RING_BLOCK = BUILDER.define("sq_ring_block", "twilightforest:arctic_fur_block");
         BUILDER.pop();
 
         SPEC = BUILDER.build();
