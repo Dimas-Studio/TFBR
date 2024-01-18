@@ -3,14 +3,16 @@ package com.dimas_studio.tfbr.utils;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.world.level.block.Block;
 
+
 public class ReplaseBlock {
-    public static class BlockToReplase {
+    public class BlockToReplase {
         public int x;
         public int y;
         public int z;
         public Block block;
         public boolean summonLightning;
         public ParticleOptions particleToCenter;
+        public Sound sound;
 
         public int tick;
 
@@ -21,22 +23,19 @@ public class ReplaseBlock {
             this.block = block;
             this.summonLightning = replaseEffects.summonLightning;
             this.tick = tick;
-            if (replaseEffects.particleToCenter != null) {
-                this.particleToCenter = ReplaseEffects.particleToCenter;
-            }
+            this.particleToCenter = replaseEffects.particleToCenter;
+            this.sound = replaseEffects.sound;
         }
     }
 
-    public static class ReplaseEffects {
+    public class ReplaseEffects {
         public boolean summonLightning;
-        public static ParticleOptions particleToCenter;
-        public ReplaseEffects(boolean summonLightning, ParticleOptions particleToCenter) {
+        public ParticleOptions particleToCenter;
+        public Sound sound;
+        public ReplaseEffects(boolean summonLightning, ParticleOptions particleToCenter, Sound sound) {
             this.summonLightning = summonLightning;
-            if (particleToCenter != null) {
-                this.particleToCenter = particleToCenter;
-            } else {
-                this.particleToCenter = null;
-            }
+            this.particleToCenter = particleToCenter;
+            this.sound = sound;
         }
     }
 }

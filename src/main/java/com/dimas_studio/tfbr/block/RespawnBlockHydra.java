@@ -38,19 +38,21 @@ public class RespawnBlockHydra extends RespawnBlock{
 
         Block trophyBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.HYDRA_TROPHY_BLOCK.get()));
         Block materialBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.HYDRA_RING_BLOCK.get()));
-        ReplaseBlock.ReplaseEffects replaseEffects = new ReplaseBlock.ReplaseEffects(false, null);
+
+        ReplaseBlock replaseBlock = new ReplaseBlock();
+        ReplaseBlock.ReplaseEffects replaseEffects = replaseBlock.new ReplaseEffects(false, null, null);
         ReplaseBlock.BlockToReplase[] blocksToReplase = {
-                new ReplaseBlock.BlockToReplase(x,y+1,z, Blocks.AIR, replaseEffects, 0),
-                new ReplaseBlock.BlockToReplase(x+3,y,z, Blocks.AIR, replaseEffects, 0),
-                new ReplaseBlock.BlockToReplase(x+2,y,z+2, Blocks.AIR, replaseEffects, 0),
-                new ReplaseBlock.BlockToReplase(x,y,z+3, Blocks.AIR, replaseEffects, 0),
-                new ReplaseBlock.BlockToReplase(x-2,y,z+2, Blocks.AIR, replaseEffects, 0),
-                new ReplaseBlock.BlockToReplase(x-3,y,z, Blocks.AIR, replaseEffects, 0),
-                new ReplaseBlock.BlockToReplase(x-2,y,z-2, Blocks.AIR, replaseEffects, 0),
-                new ReplaseBlock.BlockToReplase(x,y,z-3, Blocks.AIR, replaseEffects, 0),
-                new ReplaseBlock.BlockToReplase(x+2,y,z-2, Blocks.AIR, replaseEffects, 0),
-                new ReplaseBlock.BlockToReplase(x, y, z, Blocks.AIR, replaseEffects, 40),
-                new ReplaseBlock.BlockToReplase(x,y+2,z, TFBlocks.HYDRA_BOSS_SPAWNER.get(), replaseEffects, 1),
+                replaseBlock.new BlockToReplase(x,y+1,z, Blocks.AIR, replaseEffects, 0),
+                replaseBlock.new BlockToReplase(x+3,y,z, Blocks.AIR, replaseEffects, 0),
+                replaseBlock.new BlockToReplase(x+2,y,z+2, Blocks.AIR, replaseEffects, 0),
+                replaseBlock.new BlockToReplase(x,y,z+3, Blocks.AIR, replaseEffects, 0),
+                replaseBlock.new BlockToReplase(x-2,y,z+2, Blocks.AIR, replaseEffects, 0),
+                replaseBlock.new BlockToReplase(x-3,y,z, Blocks.AIR, replaseEffects, 0),
+                replaseBlock.new BlockToReplase(x-2,y,z-2, Blocks.AIR, replaseEffects, 0),
+                replaseBlock.new BlockToReplase(x,y,z-3, Blocks.AIR, replaseEffects, 0),
+                replaseBlock.new BlockToReplase(x+2,y,z-2, Blocks.AIR, replaseEffects, 0),
+                replaseBlock.new BlockToReplase(x, y, z, Blocks.AIR, replaseEffects, 40),
+                replaseBlock.new BlockToReplase(x,y+2,z, TFBlocks.HYDRA_BOSS_SPAWNER.get(), replaseEffects, 1),
         };
 
         if (!checkRespawnConditions(x,y,z,world, trophyBlock, materialBlock)) {

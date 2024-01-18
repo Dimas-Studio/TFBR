@@ -34,20 +34,22 @@ public class RespawnBlockNaga extends RespawnBlock{
         int x = pos.getX();
         int y = pos.getY();
         int z = pos.getZ();
-        ReplaseBlock.ReplaseEffects replaseEffectsCentarl = new ReplaseBlock.ReplaseEffects(false, null);
-        ReplaseBlock.ReplaseEffects replaseEffectsRound = new ReplaseBlock.ReplaseEffects(true, null);
+
+        ReplaseBlock replaseBlock = new ReplaseBlock();
+        ReplaseBlock.ReplaseEffects replaseEffectsCentarl = replaseBlock.new ReplaseEffects(false, null, null);
+        ReplaseBlock.ReplaseEffects replaseEffectsRound = replaseBlock.new ReplaseEffects(true, null, null);
         ReplaseBlock.BlockToReplase[] blocksToReplase = {
-                new ReplaseBlock.BlockToReplase(x,y+1,z, Blocks.AIR, replaseEffectsCentarl, 1),
-                new ReplaseBlock.BlockToReplase(x+3,y,z, Blocks.COAL_BLOCK, replaseEffectsRound, 20),
-                new ReplaseBlock.BlockToReplase(x+2,y,z+2, Blocks.COAL_BLOCK, replaseEffectsRound, 20),
-                new ReplaseBlock.BlockToReplase(x,y,z+3, Blocks.COAL_BLOCK, replaseEffectsRound, 20),
-                new ReplaseBlock.BlockToReplase(x-2,y,z+2, Blocks.COAL_BLOCK, replaseEffectsRound, 20),
-                new ReplaseBlock.BlockToReplase(x-3,y,z, Blocks.COAL_BLOCK, replaseEffectsRound, 20),
-                new ReplaseBlock.BlockToReplase(x-2,y,z-2, Blocks.COAL_BLOCK, replaseEffectsRound, 20),
-                new ReplaseBlock.BlockToReplase(x,y,z-3, Blocks.COAL_BLOCK, replaseEffectsRound, 20),
-                new ReplaseBlock.BlockToReplase(x+2,y,z-2, Blocks.COAL_BLOCK, replaseEffectsRound, 20),
-                new ReplaseBlock.BlockToReplase(x, y, z, Blocks.AIR, replaseEffectsCentarl, 40),
-                new ReplaseBlock.BlockToReplase(x,y+2,z, TFBlocks.NAGA_BOSS_SPAWNER.get(), replaseEffectsCentarl, 1),
+                replaseBlock.new BlockToReplase(x,y+1,z, Blocks.AIR, replaseEffectsCentarl, 1),
+                replaseBlock.new BlockToReplase(x+3,y,z, Blocks.COAL_BLOCK, replaseEffectsRound, 20),
+                replaseBlock.new BlockToReplase(x+2,y,z+2, Blocks.COAL_BLOCK, replaseEffectsRound, 20),
+                replaseBlock.new BlockToReplase(x,y,z+3, Blocks.COAL_BLOCK, replaseEffectsRound, 20),
+                replaseBlock.new BlockToReplase(x-2,y,z+2, Blocks.COAL_BLOCK, replaseEffectsRound, 20),
+                replaseBlock.new BlockToReplase(x-3,y,z, Blocks.COAL_BLOCK, replaseEffectsRound, 20),
+                replaseBlock.new BlockToReplase(x-2,y,z-2, Blocks.COAL_BLOCK, replaseEffectsRound, 20),
+                replaseBlock.new BlockToReplase(x,y,z-3, Blocks.COAL_BLOCK, replaseEffectsRound, 20),
+                replaseBlock.new BlockToReplase(x+2,y,z-2, Blocks.COAL_BLOCK, replaseEffectsRound, 20),
+                replaseBlock.new BlockToReplase(x, y, z, Blocks.AIR, replaseEffectsCentarl, 40),
+                replaseBlock.new BlockToReplase(x,y+2,z, TFBlocks.NAGA_BOSS_SPAWNER.get(), replaseEffectsCentarl, 1),
         };
         Block trophyBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.NAGA_TROPHY_BLOCK.get()));
         Block materialBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.NAGA_RING_BLOCK.get()));

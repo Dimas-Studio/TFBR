@@ -54,6 +54,10 @@ public class WorldBlockManagment {
                 if (blocksToReplase[i].summonLightning) {
                     summonLighting(x, y, z, world);
                 }
+                if (blocksToReplase[i].sound != null) {
+                    Sound sound = blocksToReplase[i].sound;
+                    world.playSound(null, BlockPos.containing(x, y, z),sound.soundEvent, sound.soundSource, sound.level, sound.pitch);
+                }
                 i++;
                 if (i == blocksToReplase.length){
                     return;
