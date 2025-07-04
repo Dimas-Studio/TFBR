@@ -7,18 +7,18 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import twilightforest.block.TFChestBlock;
 import twilightforest.entity.boss.*;
 import twilightforest.init.TFBlocks;
-import twilightforest.util.EntityUtil;
+import twilightforest.util.entities.EntityUtil;
 
 import static com.dimas_studio.tfbr.TFBR.MODID;
 
 
 public class BossEvent {
-    @Mod.EventBusSubscriber(modid = MODID)
+    @EventBusSubscriber(modid = MODID)
     public static class BossDeathEvent {
         @SubscribeEvent
         public static void onEntityDeath(LivingDeathEvent event){
