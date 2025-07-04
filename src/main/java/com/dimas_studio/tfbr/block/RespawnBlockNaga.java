@@ -24,13 +24,12 @@ public class RespawnBlockNaga extends RespawnBlock{
         super(p_49795_);
     }
     @Override
-    public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
+    public void use(Level world, BlockPos pos, Player entity) {
 
         if(world.isClientSide()) {
-            return InteractionResult.SUCCESS;
+            return;
         }
 
-        super.use(blockstate, world, pos, entity, hand, hit);
         int x = pos.getX();
         int y = pos.getY();
         int z = pos.getZ();
@@ -51,8 +50,8 @@ public class RespawnBlockNaga extends RespawnBlock{
                 replaseBlock.new BlockToReplase(x, y, z, Blocks.AIR, replaseEffectsCentarl, 40),
                 replaseBlock.new BlockToReplase(x,y+2,z, TFBlocks.NAGA_BOSS_SPAWNER.get(), replaseEffectsCentarl, 1),
         };
-        Block trophyBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.NAGA_TROPHY_BLOCK.get()));
-        Block materialBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.NAGA_RING_BLOCK.get()));
+        Block trophyBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(Config.NAGA_TROPHY_BLOCK.get()));
+        Block materialBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(Config.NAGA_RING_BLOCK.get()));
 
         if (!checkRespawnConditions(x,y,z,world, trophyBlock, materialBlock)) {
             incorrectAltar(x,y,z,world,entity,
@@ -62,11 +61,11 @@ public class RespawnBlockNaga extends RespawnBlock{
                     ParticleTypes.HAPPY_VILLAGER,
                     ParticleTypes.CRIT
             );
-            return InteractionResult.SUCCESS;
+            return;
         }
         WorldBlockManagment.setBlockAround(x, y, z, world, Blocks.BEDROCK, null);
         WorldBlockManagment.replaceBlocks(world, blocksToReplase);
-        return InteractionResult.SUCCESS;
+        return;
     }
 
 }

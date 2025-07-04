@@ -12,7 +12,7 @@ public class Sound {
     public SoundSource soundSource;
 
     public Sound(String resourceLocation, int level, int pitch, SoundSource soundSource) {
-        this.soundEvent = BuiltInRegistries.SOUND_EVENT.get(new ResourceLocation(resourceLocation));
+        this.soundEvent = BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse(resourceLocation));
         this.level = level;
         this.pitch = pitch;
         this.soundSource = soundSource;

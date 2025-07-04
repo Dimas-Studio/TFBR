@@ -28,14 +28,12 @@ public class RespawnBlockUrGhast extends RespawnBlock{
     public RespawnBlockUrGhast(Properties p_49795_) {
         super(p_49795_);
     }
-    @Override
-    public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
+    public void use(Level world, BlockPos pos, Player entity) {
 
         if(world.isClientSide()) {
-            return InteractionResult.SUCCESS;
+            return;
         }
 
-        super.use(blockstate, world, pos, entity, hand, hit);
         int x = pos.getX();
         int y = pos.getY();
         int z = pos.getZ();
@@ -60,8 +58,8 @@ public class RespawnBlockUrGhast extends RespawnBlock{
                 replaseBlock.new BlockToReplase(x, y, z, Blocks.AIR, replaceEffectsCentarl, 40),
                 replaseBlock.new BlockToReplase(x,y+3,z, TFBlocks.UR_GHAST_BOSS_SPAWNER.get(), replaceEffectsSpawner, 0),
         };
-        Block trophyBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.URGHAST_TROPHY_BLOCK.get()));
-        Block materialBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.URGHAST_RING_BLOCK.get()));
+        Block trophyBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(Config.URGHAST_TROPHY_BLOCK.get()));
+        Block materialBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(Config.URGHAST_RING_BLOCK.get()));
 
         if (!checkRespawnConditions(x,y,z,world, trophyBlock, materialBlock)) {
             Vector3f PARTICLE_COLOR_ROUND = Vec3.fromRGB24(16711680).toVector3f();
@@ -75,13 +73,13 @@ public class RespawnBlockUrGhast extends RespawnBlock{
                     PARTICLE_CENTER,
                     PARTICLE_ROUND
             );
-            return InteractionResult.SUCCESS;
+            return;
         }
         WorldBlockManagment.setBlock(x, y, z, world, Blocks.BEDROCK);
 
         WorldBlockManagment.setBlockAround(x, y, z, world, Blocks.BEDROCK, null);
         WorldBlockManagment.replaceBlocks(world, blocksToReplace);
-        return InteractionResult.SUCCESS;
+        return;
     }
 
 }

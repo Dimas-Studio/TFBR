@@ -8,14 +8,11 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
 import twilightforest.init.TFBlocks;
 
 public class RespawnBlockHydra extends RespawnBlock{
@@ -25,19 +22,19 @@ public class RespawnBlockHydra extends RespawnBlock{
         super(p_49795_);
     }
     @Override
-    public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
+    public void use(Level world, BlockPos pos, Player entity) {
 
         if(world.isClientSide()) {
-            return InteractionResult.SUCCESS;
+            return;
         }
-
-        super.use(blockstate, world, pos, entity, hand, hit);
         int x = pos.getX();
         int y = pos.getY();
         int z = pos.getZ();
 
-        Block trophyBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.HYDRA_TROPHY_BLOCK.get()));
-        Block materialBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.HYDRA_RING_BLOCK.get()));
+//        Block trophyBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.HYDRA_TROPHY_BLOCK.get()));
+//        Block materialBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.HYDRA_RING_BLOCK.get()));
+        Block trophyBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(Config.HYDRA_TROPHY_BLOCK.get()));
+        Block materialBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(Config.HYDRA_RING_BLOCK.get()));
 
         ReplaseBlock replaseBlock = new ReplaseBlock();
         ReplaseBlock.ReplaseEffects replaseEffects = replaseBlock.new ReplaseEffects(false, null, null);
@@ -63,13 +60,13 @@ public class RespawnBlockHydra extends RespawnBlock{
                     ParticleTypes.FLAME,
                     ParticleTypes.SMOKE
             );
-            return InteractionResult.SUCCESS;
+            return;
         }
         WorldBlockManagment.setBlock(x,y,z,world,Blocks.BEDROCK);
         WorldBlockManagment.replaceBlocks(world, blocksToReplase);
         if (world instanceof ServerLevel level)
             level.sendParticles(ParticleTypes.FLAME, x, y+1, z, 500, 1, 1, 1, 2);
-        return InteractionResult.SUCCESS;
+        return;
     }
 
 }

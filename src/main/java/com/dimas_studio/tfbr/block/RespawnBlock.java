@@ -9,9 +9,15 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.Block;
@@ -101,5 +107,24 @@ public class RespawnBlock extends Block {
 		}
 		return true;
 	}
+
+	@Override
+	protected ItemInteractionResult useItemOn(ItemStack stack, BlockState blockState, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
+		ItemInteractionResult result = super.useItemOn(stack, blockState, world, pos, entity, hand, hit);
+		use(world, pos, entity);
+		return result;
+	}
+
+	@Override
+	protected InteractionResult useWithoutItem(BlockState blockState, Level world, BlockPos pos, Player entity, BlockHitResult hit) {
+		InteractionResult result = super.useWithoutItem(blockState, world, pos, entity, hit);
+		use(world, pos, entity);
+		return result;
+	}
+
+
+	protected void use(Level world, BlockPos pos, Player entity) {
+        return;
+    }
 
 }

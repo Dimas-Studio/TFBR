@@ -28,19 +28,18 @@ public class RespawnBlockSnowQueen extends RespawnBlock{
         super(p_49795_);
     }
     @Override
-    public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
+    public void use(Level world, BlockPos pos, Player entity) {
 
         if(world.isClientSide()) {
-            return InteractionResult.SUCCESS;
+            return;
         }
 
-        super.use(blockstate, world, pos, entity, hand, hit);
         int x = pos.getX();
         int y = pos.getY();
         int z = pos.getZ();
 
-        Block trophyBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.SQ_TROPHY_BLOCK.get()));
-        Block materialBlock = BuiltInRegistries.BLOCK.get(new ResourceLocation(Config.SQ_RING_BLOCK.get()));
+        Block trophyBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(Config.SQ_TROPHY_BLOCK.get()));
+        Block materialBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(Config.SQ_RING_BLOCK.get()));
 
         ReplaseBlock replaseBlock = new ReplaseBlock();
         ReplaseBlock.ReplaseEffects replaseEffects = replaseBlock.new ReplaseEffects(false, null, null);
@@ -68,7 +67,7 @@ public class RespawnBlockSnowQueen extends RespawnBlock{
                     PARTICLE,
                     ParticleTypes.SNOWFLAKE
             );
-            return InteractionResult.SUCCESS;
+            return;
         }
         WorldBlockManagment.setBlock(x,y,z,world,Blocks.BARRIER);
         WorldBlockManagment.replaceBlocks(world, blocksToReplase);
@@ -77,7 +76,7 @@ public class RespawnBlockSnowQueen extends RespawnBlock{
             DustParticleOptions PARTICLE = new DustParticleOptions(PARTICLE_COLOR, 1.0F);
             level.sendParticles(PARTICLE, x, y + 3, z, 500, 1, 1, 1, 2);
         }
-        return InteractionResult.SUCCESS;
+        return;
     }
 
 }
