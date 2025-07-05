@@ -3,6 +3,7 @@ package com.dimas_studio.tfbr.events;
 import com.dimas_studio.tfbr.TFBR;
 import com.dimas_studio.tfbr.block.ModBlocks;
 import com.dimas_studio.tfbr.utils.WorldBlockManagment;
+import com.mojang.logging.LogUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -15,44 +16,38 @@ import twilightforest.init.TFBlocks;
 import twilightforest.util.entities.EntityUtil;
 
 import static com.dimas_studio.tfbr.TFBR.MODID;
+import static com.dimas_studio.tfbr.utils.WorldBlockManagment.summonBlock;
 
 
+@EventBusSubscriber(modid = MODID)
 public class BossEvent {
-    @EventBusSubscriber(modid = MODID)
-    public static class BossDeathEvent {
-        @SubscribeEvent
-        public static void onEntityDeath(LivingDeathEvent event){
-            if (event == null) {
-                return;
-            }
-            if (event.getEntity() instanceof Naga naga) {
-                summonBlock(naga.level(), EntityUtil.bossChestLocation(naga), ModBlocks.RESPAWN_NAGA.get(), -1);
-            }
-            if (event.getEntity() instanceof Lich lich) {
-                summonBlock(lich.level(), EntityUtil.bossChestLocation(lich), ModBlocks.RESPAWN_LICH.get(), -1);
-            }
-            if (event.getEntity() instanceof Hydra hydra) {
-                summonBlock(hydra.level(), EntityUtil.bossChestLocation(hydra), ModBlocks.RESPAWN_HYDRA.get(), -1);
-            }
-            if (event.getEntity() instanceof UrGhast urGhast) {
-                summonBlock(urGhast.level(), EntityUtil.bossChestLocation(urGhast), ModBlocks.RESPAWN_UR_GHAST.get(), -2);
-                int x = EntityUtil.bossChestLocation(urGhast).getX();
-                int y = EntityUtil.bossChestLocation(urGhast).getY();
-                int z = EntityUtil.bossChestLocation(urGhast).getZ();
-                WorldBlockManagment.setBlockAroundFiled(x,y-3,z,4,urGhast.level(), TFBlocks.ENCASED_TOWERWOOD.get());
-            }
-            if (event.getEntity() instanceof SnowQueen snowQueen) {
-                summonBlock(snowQueen.level(), EntityUtil.bossChestLocation(snowQueen), ModBlocks.RESPAWN_SNOW_QUEEN.get(), -2);
-            }
-        }
-    }
-
-
-    public static void summonBlock(Level world, BlockPos blockPos, Block block, int extraY) {
-        if (world.getBlockState(blockPos).getBlock() instanceof TFChestBlock) {
-            WorldBlockManagment.setBlock(BlockPos.containing(blockPos.getX(), blockPos.getY()+extraY, blockPos.getZ()), world, block);
+    @SubscribeEvent
+    public static void onLivingDeath(LivingDeathEvent event){
+        if (event == null) {
             return;
         }
-        TFBR.queueServerWork(40, () -> summonBlock(world, blockPos, block, extraY));
+        if (event.getEntity() instanceof Naga naga) {
+            summonBlock(naga.level(), EntityUtil.bossChestLocation(naga), ModBlocks.RESPAWN_NAGA.get(), -1);
+        }
+        if (event.getEntity() instanceof Lich lich) {
+            summonBlock(lich.level(), EntityUtil.bossChestLocation(lich), ModBlocks.RESPAWN_LICH.get(), -1);
+        }
+        if (event.getEntity() instanceof Hydra hydra) {
+            summonBlock(hydra.level(), EntityUtil.bossChestLocation(hydra), ModBlocks.RESPAWN_HYDRA.get(), -1);
+        }
+        if (event.getEntity() instanceof UrGhast urGhast) {
+            summonBlock(urGhast.level(), EntityUtil.bossChestLocation(urGhast), ModBlocks.RESPAWN_UR_GHAST.get(), -2);
+            int x = EntityUtil.bossChestLocation(urGhast).getX();
+            int y = EntityUtil.bossChestLocation(urGhast).getY();
+            int z = EntityUtil.bossChestLocation(urGhast).getZ();
+            WorldBlockManagment.setBlockAroundFiled(x,y-3,z,4,urGhast.level(), TFBlocks.ENCASED_TOWERWOOD.get());
+        }
+        if (event.getEntity() instanceof SnowQueen snowQueen) {
+            summonBlock(snowQueen.level(), EntityUtil.bossChestLocation(snowQueen), ModBlocks.RESPAWN_SNOW_QUEEN.get(), -2);
+            LogUtils.getLogger().info("12353432");
+        }
     }
 }
+
+
+

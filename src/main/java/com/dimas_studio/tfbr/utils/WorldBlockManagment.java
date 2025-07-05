@@ -7,6 +7,7 @@ import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
+import twilightforest.block.TFChestBlock;
 
 public class WorldBlockManagment {
     public static void setBlock(int x, int y, int z, Level world, Block block) {
@@ -84,4 +85,11 @@ public class WorldBlockManagment {
         world.addFreshEntity(lightningBolt);
     }
 
+    public static void summonBlock(Level world, BlockPos blockPos, Block block, int extraY) {
+        if (world.getBlockState(blockPos).getBlock() instanceof TFChestBlock) {
+            WorldBlockManagment.setBlock(BlockPos.containing(blockPos.getX(), blockPos.getY()+extraY, blockPos.getZ()), world, block);
+            return;
+        }
+        TFBR.queueServerWork(40, () -> summonBlock(world, blockPos, block, extraY));
+    }
 }

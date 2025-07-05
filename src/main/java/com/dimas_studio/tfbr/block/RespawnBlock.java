@@ -27,7 +27,7 @@ import net.minecraft.core.BlockPos;
 
 
 public class RespawnBlock extends Block {
-	public RespawnBlock(BlockBehaviour.Properties p_49795_) {
+	public RespawnBlock(Properties p_49795_) {
 		super(p_49795_.noOcclusion());
 	}
 
@@ -108,17 +108,13 @@ public class RespawnBlock extends Block {
 		return true;
 	}
 
-	@Override
-	protected ItemInteractionResult useItemOn(ItemStack stack, BlockState blockState, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
-		ItemInteractionResult result = super.useItemOn(stack, blockState, world, pos, entity, hand, hit);
-		use(world, pos, entity);
-		return result;
-	}
 
 	@Override
 	protected InteractionResult useWithoutItem(BlockState blockState, Level world, BlockPos pos, Player entity, BlockHitResult hit) {
 		InteractionResult result = super.useWithoutItem(blockState, world, pos, entity, hit);
-		use(world, pos, entity);
+		if (!world.isClientSide) {
+			use(world, pos, entity);
+		}
 		return result;
 	}
 
