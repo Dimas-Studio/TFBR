@@ -10,14 +10,10 @@ import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
 import twilightforest.init.TFBlocks;
@@ -50,7 +46,7 @@ public class RespawnBlockUrGhast extends RespawnBlock{
                 replaseBlock.new BlockToReplase(x,y,z+3, TFBlocks.ANTIBUILT_BLOCK.get(), replaceEffectsRound, 0),
                 replaseBlock.new BlockToReplase(x-3,y,z, TFBlocks.ANTIBUILT_BLOCK.get(), replaceEffectsRound, 0),
                 replaseBlock.new BlockToReplase(x,y,z-3, TFBlocks.ANTIBUILT_BLOCK.get(), replaceEffectsRound, 0),
-
+//
                 replaseBlock.new BlockToReplase(x+2,y,z+2, TFBlocks.ANTIBUILT_BLOCK.get(), replaceEffectsRound, 20),
                 replaseBlock.new BlockToReplase(x-2,y,z+2, TFBlocks.ANTIBUILT_BLOCK.get(), replaceEffectsRound, 0),
                 replaseBlock.new BlockToReplase(x-2,y,z-2, TFBlocks.ANTIBUILT_BLOCK.get(), replaceEffectsRound, 0),
