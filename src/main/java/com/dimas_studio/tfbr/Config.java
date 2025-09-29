@@ -18,46 +18,49 @@ import java.util.stream.Collectors;
 public class Config
 {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
+    public static final ForgeConfigSpec SPEC;
+    public static final ForgeConfigSpec.ConfigValue<String> NAGA_TROPHY_BLOCK;
+    public static final ForgeConfigSpec.ConfigValue<String> NAGA_RING_BLOCK;
+    public static final ForgeConfigSpec.ConfigValue<String> LICH_TROPHY_BLOCK;
+    public static final ForgeConfigSpec.ConfigValue<String> LICH_RING_BLOCK;
+    public static final ForgeConfigSpec.ConfigValue<String> HYDRA_TROPHY_BLOCK;
+    public static final ForgeConfigSpec.ConfigValue<String> HYDRA_RING_BLOCK;
+    public static final ForgeConfigSpec.ConfigValue<String> URGHAST_TROPHY_BLOCK;
+    public static final ForgeConfigSpec.ConfigValue<String> URGHAST_RING_BLOCK;
+    public static final ForgeConfigSpec.ConfigValue<String> SQ_TROPHY_BLOCK;
+    public static final ForgeConfigSpec.ConfigValue<String> SQ_RING_BLOCK;
 
-    private static final ForgeConfigSpec.BooleanValue LOG_DIRT_BLOCK = BUILDER
-            .comment("Whether to log the dirt block on common setup")
-            .define("logDirtBlock", true);
+    static {
+        BUILDER.push("Naga resurrection");
+        NAGA_TROPHY_BLOCK = BUILDER.define("naga_trophy_block", "twilightforest:naga_trophy");
+        NAGA_RING_BLOCK = BUILDER.define("naga_ring_block", "twilightforest:ironwood_block");
+        BUILDER.pop();
 
-    private static final ForgeConfigSpec.IntValue MAGIC_NUMBER = BUILDER
-            .comment("A magic number")
-            .defineInRange("magicNumber", 42, 0, Integer.MAX_VALUE);
+        BUILDER.push("Lich resurrection");
+        LICH_TROPHY_BLOCK = BUILDER.define("lich_trophy_block", "twilightforest:lich_trophy");
+        LICH_RING_BLOCK = BUILDER.define("lich_ring_block", "minecraft:gold_block");
+        BUILDER.pop();
 
-    public static final ForgeConfigSpec.ConfigValue<String> MAGIC_NUMBER_INTRODUCTION = BUILDER
-            .comment("What you want the introduction message to be for the magic number")
-            .define("magicNumberIntroduction", "The magic number is... ");
+        BUILDER.push("Hydra resurrection");
+        HYDRA_TROPHY_BLOCK = BUILDER.define("hydra_trophy_block", "twilightforest:hydra_trophy");
+        HYDRA_RING_BLOCK = BUILDER.define("hydra_ring_block", "minecraft:ancient_debris");
+        BUILDER.pop();
 
-    // a list of strings that are treated as resource locations for items
-    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> ITEM_STRINGS = BUILDER
-            .comment("A list of items to log on common setup.")
-            .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), Config::validateItemName);
+        BUILDER.push("Ur-Ghast resurrection");
+        URGHAST_TROPHY_BLOCK = BUILDER.define("urghast_trophy_block", "twilightforest:ur_ghast_trophy");
+        URGHAST_RING_BLOCK = BUILDER.define("urghast_ring_block", "twilightforest:knightmetal_block");
+        BUILDER.pop();
 
-    static final ForgeConfigSpec SPEC = BUILDER.build();
-
-    public static boolean logDirtBlock;
-    public static int magicNumber;
-    public static String magicNumberIntroduction;
-    public static Set<Item> items;
-
-    private static boolean validateItemName(final Object obj)
-    {
-        return obj instanceof final String itemName && ForgeRegistries.ITEMS.containsKey(new ResourceLocation(itemName));
+        BUILDER.push("Snow Queen resurrection");
+        SQ_TROPHY_BLOCK = BUILDER.define("sq_trophy_block", "twilightforest:snow_queen_trophy");
+        SQ_RING_BLOCK = BUILDER.define("sq_ring_block", "twilightforest:arctic_fur_block");
+        BUILDER.pop();
+        SPEC = BUILDER.build();
     }
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event)
     {
-        logDirtBlock = LOG_DIRT_BLOCK.get();
-        magicNumber = MAGIC_NUMBER.get();
-        magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
 
-        // convert the list of strings into a set of items
-        items = ITEM_STRINGS.get().stream()
-                .map(itemName -> ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemName)))
-                .collect(Collectors.toSet());
     }
 }

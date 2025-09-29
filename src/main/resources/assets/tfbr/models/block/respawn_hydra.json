@@ -1,0 +1,9 @@
+{
+  "parent": "tfbr:custom/respawn_pedestal",
+  "textures": {
+    "all": "tfbr:block/respawn_hydra",
+    "particle": "tfbr:block/respawn_hydra",
+    "0": "tfbr:block/respawn_hydra"
+  },
+  "render_type": "solid"
+}
