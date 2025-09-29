@@ -101,10 +101,8 @@ public class RespawnBlock extends Block {
 
     @Override
     public InteractionResult use(BlockState blockState, Level world, BlockPos pos, Player entity, InteractionHand interactionHand, BlockHitResult hit) {
-        if (entity.getItemInHand(interactionHand).isEmpty()) {
-            if (!world.isClientSide) {
-                use(world, pos, entity);
-            }
+        if (!world.isClientSide) {
+            use(world, pos, entity);
         }
         return InteractionResult.SUCCESS;
     }
