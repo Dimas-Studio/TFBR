@@ -8,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -33,35 +34,35 @@ public class RespawnBlock extends Block {
 
 
 
-	protected void incorrectAltar(int x, int y, int z, Level world, Entity player, Block thophy, Block material, String tanslationkey, ParticleOptions centralParticle, ParticleOptions roundParticle) {
-		if (player instanceof Player) {
+	protected void incorrectAltar(int x, int y, int z, Level world, Entity entity, Block thophy, Block material, String tanslationkey, ParticleOptions centralParticle, ParticleOptions roundParticle) {
+		if (entity instanceof Player player) {
 			String message = String.format(Component.translatable(tanslationkey).getString(),
 					material.getName().getString(),
 					thophy.getName().getString()
 			);
 			player.sendSystemMessage(Component.literal(message));
-		}
-		if (world instanceof ServerLevel) {
-			summonAllParticle(x,y,z,world,50, centralParticle, roundParticle);
+			if (world instanceof ServerLevel) {
+				summonAllParticle(x,y,z,world,50, centralParticle, roundParticle, player);
+			}
 		}
 	}
 
-	private void summonAllParticle(int x, int y, int z, Level world, int times, ParticleOptions centralParticle, ParticleOptions roundParticle) {
-		summonParticle(x+3,y,z,world, roundParticle);
-		summonParticle(x-3,y,z,world, roundParticle);
-		summonParticle(x,y,z+3,world, roundParticle);
-		summonParticle(x,y,z-3,world, roundParticle);
-		summonParticle(x+2,y,z+2,world, roundParticle);
-		summonParticle(x+2,y,z-2,world, roundParticle);
-		summonParticle(x-2,y,z+2,world, roundParticle);
-		summonParticle(x-2,y,z-2,world, roundParticle);
-		summonParticle(x, y+1, z, world, centralParticle);
+	private void summonAllParticle(int x, int y, int z, Level world, int times, ParticleOptions centralParticle, ParticleOptions roundParticle, Player player) {
+		summonParticle(x+3,y,z,world, roundParticle, player);
+		summonParticle(x-3,y,z,world, roundParticle, player);
+		summonParticle(x,y,z+3,world, roundParticle, player);
+		summonParticle(x,y,z-3,world, roundParticle, player);
+		summonParticle(x+2,y,z+2,world, roundParticle, player);
+		summonParticle(x+2,y,z-2,world, roundParticle, player);
+		summonParticle(x-2,y,z+2,world, roundParticle, player);
+		summonParticle(x-2,y,z-2,world, roundParticle, player);
+		summonParticle(x, y+1, z, world, centralParticle, player);
 		if (times > 0) {
-			TFBR.queueServerWork(5, () -> summonAllParticle(x,y,z,world,times-1, centralParticle, roundParticle));
+			TFBR.queueServerWork(5, () -> summonAllParticle(x,y,z,world,times-1, centralParticle, roundParticle, player));
 		}
 	}
 
-	private void summonParticle(int X, int Y, int Z, Level world, ParticleOptions particleOptions){
+	private void summonParticle(int X, int Y, int Z, Level world, ParticleOptions particleOptions, Player player){
 			RandomSource random = world.random;
 			double x = X + 0.5;
 			double y = Y + 0.5;
@@ -71,9 +72,9 @@ public class RespawnBlock extends Block {
 				double particleY = y - 0.2 + random.nextDouble() * 0.4;
 				double particleZ = z - 0.2 + random.nextDouble() * 0.4;
 
-				Minecraft.getInstance().levelRenderer.addParticle(
-						particleOptions, false,
-						particleX, particleY, particleZ, 0, 0, 0);
+				if (!(player instanceof ServerPlayer serverPlayer)) return;
+				ServerLevel serverLevel = serverPlayer.serverLevel();
+				serverLevel.sendParticles(particleOptions, particleX, particleY, particleZ, 5, 0, 0, 0, 0.01);
 		}
 	}
 
