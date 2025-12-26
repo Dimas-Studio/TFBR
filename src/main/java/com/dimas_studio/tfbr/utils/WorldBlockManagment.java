@@ -86,6 +86,9 @@ public class WorldBlockManagment {
     }
 
     public static void summonBlock(Level world, BlockPos blockPos, Block block, int extraY) {
+        if (world.isClientSide()) {
+            return;
+        }
         if (world.getBlockState(blockPos).getBlock() instanceof TFChestBlock) {
             WorldBlockManagment.setBlock(BlockPos.containing(blockPos.getX(), blockPos.getY()+extraY, blockPos.getZ()), world, block);
             return;
