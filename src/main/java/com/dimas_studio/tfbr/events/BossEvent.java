@@ -1,16 +1,11 @@
 package com.dimas_studio.tfbr.events;
 
-import com.dimas_studio.tfbr.TFBR;
 import com.dimas_studio.tfbr.block.ModBlocks;
 import com.dimas_studio.tfbr.utils.WorldBlockManagment;
 import com.mojang.logging.LogUtils;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import twilightforest.block.TFChestBlock;
 import twilightforest.entity.boss.*;
 import twilightforest.init.TFBlocks;
 import twilightforest.util.entities.EntityUtil;
@@ -44,7 +39,6 @@ public class BossEvent {
         }
         if (event.getEntity() instanceof SnowQueen snowQueen) {
             summonBlock(snowQueen.level(), EntityUtil.bossChestLocation(snowQueen), ModBlocks.RESPAWN_SNOW_QUEEN.get(), -2);
-            LogUtils.getLogger().info("12353432");
         }
     }
 }
